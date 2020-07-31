@@ -19,7 +19,7 @@ public class ProductControllerTest {
 		
 		@Test
 		public void contextLoads() throws Exception {
-			fail();
+			assertThat(controller).isNotNull();
 			
 		}
 		
