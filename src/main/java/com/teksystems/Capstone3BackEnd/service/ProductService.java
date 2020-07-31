@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public interface ProductService {
 //    ProductDto getProduct(String productId);
     ProductDto createProduct(ProductDto productDto);
-//    ProdcutDto updateProduct(String productId, ProductDto productDto);
+    ProductDto updateProduct(String productId, ProductDto productDto);
 
 }

@@ -7,16 +7,15 @@ import javax.persistence.Id;
 
 @Entity
 public class ProductEntity {
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id; 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String productId;
 	private String productName;
 	private int quantity;
 
-	
-	public ProductEntity(String productName, int quantity) {
+	public ProductEntity(long id, String productName, int quantity) {
+		this.id = id;
 		this.productName = productName;
 		this.quantity = quantity;
 	}
