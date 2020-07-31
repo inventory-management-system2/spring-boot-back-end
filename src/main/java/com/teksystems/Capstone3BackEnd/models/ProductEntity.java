@@ -5,8 +5,8 @@ public class ProductEntity {
 	private String productName;
 	private int quantity;
 
-	public ProductEntity(String productId, String productName, int quantity) {
-		this.productId = productId;
+	public ProductEntity(String productName, int quantity) {
+//		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
 	}
