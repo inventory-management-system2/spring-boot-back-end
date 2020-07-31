@@ -50,6 +50,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+>>>>>>> 406d98c4d6aa539e28538733d5211ea599941ca8
 	</dependencies>
 
 	<build>
