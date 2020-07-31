@@ -29,8 +29,15 @@ public class ProductContollerTest {
 	@Test
 	public void shouldUpdateProduct() {
 		
-		fail("shouldUpdateProduct test failed"); 
+		ProductRequest oldProduct = new ProductRequest("MacBookPro", 2); 
 		
+		ProductResponse createdProduct = controller.createProduct(oldProduct);
+		
+		ProductRequest updatedProduct = new ProductRequest("Windows Dell", 9); 
+		
+		ProductResponse response = controller.updateProduct(createdProduct.getProductId(), updatedProduct); 
+		
+		assertThat(updatedProduct).isEqualToComparingFieldByField(response); 
 		
 	}
 	
