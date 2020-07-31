@@ -1,6 +1,7 @@
 package com.teksystems.Capstone3BackEnd.models.response;
 
 public class ProductResponse {
+	private String productId; 
     private String productName;
     private int quantity;
 
@@ -25,4 +26,12 @@ public class ProductResponse {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+    
+    
 }
