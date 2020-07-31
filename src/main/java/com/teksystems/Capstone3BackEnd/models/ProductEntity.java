@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class ProductEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String productId;
 	private String productName;
 	private int quantity;
