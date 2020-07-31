@@ -30,6 +30,7 @@ public class ProductController {
         BeanUtils.copyProperties(createdProduct, returnValue);
         return returnValue;
     }
+
     @PutMapping("/{id}")
     public ProductResponse updateProduct(@PathVariable String productId, @RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
@@ -41,4 +42,5 @@ public class ProductController {
         BeanUtils.copyProperties(updatedProduct, returnValue);
         return returnValue;
     }
+
 }
