@@ -5,6 +5,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, String> {
-   
+public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Long> {
+   ProductEntity findByProductId(String productId);
 }

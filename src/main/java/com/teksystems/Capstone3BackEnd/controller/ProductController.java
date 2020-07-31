@@ -30,16 +30,17 @@ public class ProductController {
         BeanUtils.copyProperties(createdProduct, returnValue);
         return returnValue;
     }
-//    @PutMapping("/{id}")
-//    public ProductResponse updateProduct(@PathVariable String userId, @RequestBody ProductRequest productRequest){
-//        ProductDto productDto = new ProductDto();
-//        BeanUtils.copyProperties(productRequest, productDto);
-//
-//        ProductDto updatedProduct = productService.updateProduct(productId, productDto);
-//
-//        ProductResponse returnValue = new ProductResponse();
-//        BeanUtils.copyProperties(updatedProduct, returnValue);
-//        return returnValue;
-//    }
-    
+
+    @PutMapping("/{id}")
+    public ProductResponse updateProduct(@PathVariable String productId, @RequestBody ProductRequest productRequest){
+        ProductDto productDto = new ProductDto();
+        BeanUtils.copyProperties(productRequest, productDto);
+
+        ProductDto updatedProduct = productService.updateProduct(productId, productDto);
+
+        ProductResponse returnValue = new ProductResponse();
+        BeanUtils.copyProperties(updatedProduct, returnValue);
+        return returnValue;
+    }
+
 }
