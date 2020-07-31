@@ -2,8 +2,10 @@ package com.teksystems.Capstone3BackEnd.repository;
 
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, String> {
-    ProductEntity save(ProductEntity product);
-//    ProductEntity findByUserId(String productId);
+@Repository
+public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Long> {
+   ProductEntity findByProductId(String productId);
+
 }

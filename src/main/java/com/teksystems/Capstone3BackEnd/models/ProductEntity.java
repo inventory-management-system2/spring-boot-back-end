@@ -1,12 +1,21 @@
 package com.teksystems.Capstone3BackEnd.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ProductEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private String productId;
 	private String productName;
 	private int quantity;
 
-	public ProductEntity(String productName, int quantity) {
-//		this.productId = productId;
+	public ProductEntity(long id, String productName, int quantity) {
+		this.id = id;
 		this.productName = productName;
 		this.quantity = quantity;
 	}
