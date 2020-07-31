@@ -1,6 +1,8 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,11 +18,21 @@ public class ProductContollerTest {
 	
 	@Test
 	public void shouldCreateProduct() {
-		ProductRequest request = new ProductRequest("1234", "CD", 1);
+		ProductRequest request = new ProductRequest("CD", 1);
 		
 		ProductResponse response = controller.createProduct(request);
 		
 		assertThat(request).isEqualToComparingFieldByField(response);
 	}
+	
+	
+	@Test
+	public void shouldUpdateProduct() {
+		
+		fail("shouldUpdateProduct test failed"); 
+		
+		
+	}
+	
 
 }

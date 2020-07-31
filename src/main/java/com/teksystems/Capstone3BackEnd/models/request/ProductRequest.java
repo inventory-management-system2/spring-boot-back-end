@@ -4,7 +4,7 @@ public class ProductRequest {
     private String productName;
     private int quantity;
 
-    public ProductRequest(String productId, String productName, int quantity) {
+    public ProductRequest(String productName, int quantity) {
         this.productName = productName;
         this.quantity = quantity;
     }
