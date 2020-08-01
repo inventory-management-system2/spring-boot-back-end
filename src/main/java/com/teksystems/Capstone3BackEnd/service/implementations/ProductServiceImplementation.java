@@ -49,13 +49,6 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public ProductEntity updateQuantityProduct(String productId, ProductRequest productRequestQty) {
 		ProductEntity productEntity = productRepository.findByProductId(productId);
-
-		UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity); 
-		ProductEntity updatedProduct = productRepository.save(productEntity); 
-		return updatedProduct;
-	}   
-    
-
 		if (productRequestQty.getQuantity() < 1) {
 			return productEntity;
 		}
@@ -66,5 +59,5 @@ public class ProductServiceImplementation implements ProductService {
 		}
 
 	}
->>>>>>> 598050357ecfe1d0b6d49ffef72793be14f71c52
+
 }
