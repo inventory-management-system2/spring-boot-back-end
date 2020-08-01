@@ -42,13 +42,38 @@ public class ProductContollerTest {
 	}
 	
 	@Test
-	public void shoudUpdateProductQuantity() {
+	public void shouldUpdateProductQuantity() {
 		
 		ProductRequest oldProduct = new ProductRequest("MacBook Pro", 10);
+		
 		ProductResponse createdProduct = controller.createProduct(oldProduct);
+		
 		ProductRequest updatedProduct = new ProductRequest("MacBook Pro", 100);
+		
 		ProductResponse response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
-		assertEquals(response.getQuantity(), 110); 
+		
+		assertEquals(110, response.getQuantity()); 
+		
+	}
+	
+	@Test
+	public void shouldNotupdateProductQuantityForLessThanOne() {
+	
+		ProductRequest oldProduct = new ProductRequest("MacBook Pro", 10);
+		
+		ProductResponse createdProduct = controller.createProduct(oldProduct);
+		
+		ProductRequest updatedProduct = new ProductRequest("MacBook Pro", 0);
+		
+		ProductResponse response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		
+		assertEquals(response.getQuantity(), 10); 
+		
+		updatedProduct = new ProductRequest("MacBook Pro", -1);
+		
+		response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		
+		assertEquals(10, response.getQuantity()); 
 		
 	}
 	

@@ -13,59 +13,49 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
-    private final ProductRepository productRepository;
-    private final Utils utils;
+	private final ProductRepository productRepository;
+	private final Utils utils;
 
-    public ProductServiceImplementation(ProductRepository productRepository, Utils utils){
-        this.productRepository = productRepository;
-        this.utils = utils;
-    }
+	public ProductServiceImplementation(ProductRepository productRepository, Utils utils) {
+		this.productRepository = productRepository;
+		this.utils = utils;
+	}
 
-    @Override
-    public ProductDto updateProduct(String productId, ProductDto productDto){
-        ProductEntity updatedProduct = productRepository.findByProductId(productId);
-        BeanUtils.copyProperties(productDto, updatedProduct);
-        ProductEntity productEntity = productRepository.save(updatedProduct);
+	@Override
+	public ProductDto updateProduct(String productId, ProductDto productDto) {
+		ProductEntity updatedProduct = productRepository.findByProductId(productId);
+		BeanUtils.copyProperties(productDto, updatedProduct);
+		ProductEntity productEntity = productRepository.save(updatedProduct);
 
-        ProductDto returnValue = new ProductDto();
-        BeanUtils.copyProperties(productEntity, returnValue);
-        return returnValue;
-    }
+		ProductDto returnValue = new ProductDto();
+		BeanUtils.copyProperties(productEntity, returnValue);
+		return returnValue;
+	}
 
-    @Override
-    public ProductDto createProduct(ProductDto productDto){
-        ProductEntity newProduct = new ProductEntity();
-        BeanUtils.copyProperties(productDto, newProduct);
+	@Override
+	public ProductDto createProduct(ProductDto productDto) {
+		ProductEntity newProduct = new ProductEntity();
+		BeanUtils.copyProperties(productDto, newProduct);
 
-        newProduct.setProductId(utils.generateUserId(15));
+		newProduct.setProductId(utils.generateUserId(15));
 
-        ProductEntity storedProduct = productRepository.save(newProduct);
-        ProductDto returnValue = new ProductDto();
-        BeanUtils.copyProperties(storedProduct, returnValue);
-        return returnValue;
-    }
+		ProductEntity storedProduct = productRepository.save(newProduct);
+		ProductDto returnValue = new ProductDto();
+		BeanUtils.copyProperties(storedProduct, returnValue);
+		return returnValue;
+	}
 
 	@Override
 	public ProductEntity updateQuantityProduct(String productId, ProductRequest productRequestQty) {
 		ProductEntity productEntity = productRepository.findByProductId(productId);
-		UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity); 
-		ProductEntity updatedProduct = productRepository.save(productEntity); 
-		return updatedProduct;
-	}   
-    
-	
-    
-    
+		if (productRequestQty.getQuantity() < 1) {
+			return productEntity;
+		}
+		else {
+			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
+			ProductEntity updatedProduct = productRepository.save(productEntity);
+			return updatedProduct;
+		}
+
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
