@@ -13,13 +13,24 @@ public class ProductEntity {
 	private String productId;
 	private String productName;
 	private int quantity;
-
-	public ProductEntity(String productName, int quantity) {
+	private String serialNumber;
+	private Double price;
+	private String category;
+	private String imageUrl;
+	
+	public ProductEntity(String productId, String productName, int quantity, String serialNumber, Double price,
+			String category, String imageUrl) {
+		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
 	}
 
 	public ProductEntity(){}
+
 
 	public String getProductId() {
 		return productId;
@@ -44,6 +55,39 @@ public class ProductEntity {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
 }
 
 
