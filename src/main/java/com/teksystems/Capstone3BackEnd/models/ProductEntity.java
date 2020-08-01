@@ -10,7 +10,6 @@ public class ProductEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String productId;
 	private String productName;
 	private int quantity;
 	private String serialNumber;
@@ -18,9 +17,8 @@ public class ProductEntity {
 	private String category;
 	private String imageUrl;
 	
-	public ProductEntity(String productId, String productName, int quantity, String serialNumber, Double price,
+	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
 			String category, String imageUrl) {
-		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
 		this.serialNumber = serialNumber;
@@ -30,15 +28,6 @@ public class ProductEntity {
 	}
 
 	public ProductEntity(){}
-
-
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
 
 	public String getProductName() {
 		return productName;
