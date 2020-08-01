@@ -1,7 +1,7 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
 import static org.assertj.core.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +40,18 @@ public class ProductContollerTest {
 		assertThat(updatedProduct).isEqualToComparingFieldByField(response); 
 		
 	}
+	
+	@Test
+	public void shoudUpdateProductQuantity() {
+		
+		ProductRequest oldProduct = new ProductRequest("MacBook Pro", 10);
+		ProductResponse createdProduct = controller.createProduct(oldProduct);
+		ProductRequest updatedProduct = new ProductRequest("MacBook Pro", 100);
+		ProductResponse response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		assertEquals(response.getQuantity(), 110); 
+		
+	}
+	
 	
 
 }
