@@ -1,7 +1,9 @@
 package com.teksystems.Capstone3BackEnd.service.implementations;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.controller.UpdateQuantity;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
+import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
 import com.teksystems.Capstone3BackEnd.utils.Utils;
@@ -43,8 +45,27 @@ public class ProductServiceImplementation implements ProductService {
         return returnValue;
     }
 
-//    @Override
-//    public ProductDto getProduct(String productId){
-//
-//    }
+	@Override
+	public ProductEntity updateQuantityProduct(String productId, ProductRequest productRequestQty) {
+		ProductEntity productEntity = productRepository.findByProductId(productId);
+		UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity); 
+		ProductEntity updatedProduct = productRepository.save(productEntity); 
+		return updatedProduct;
+	}   
+    
+	
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+

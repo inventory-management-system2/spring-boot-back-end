@@ -1,6 +1,7 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
@@ -42,5 +43,22 @@ public class ProductController {
         BeanUtils.copyProperties(updatedProduct, returnValue);
         return returnValue;
     }
+    
+    @PutMapping("/quantity/{productId}")
+    public ProductResponse updateQuantity(@PathVariable String productId, @RequestBody ProductRequest productRequestQty) {
+    	
+    	ProductEntity productEntity = productService.updateQuantityProduct(productId, productRequestQty); 
+    	
+    	ProductResponse returnValue = new ProductResponse();
+    	BeanUtils.copyProperties(productEntity, returnValue);
+    	return returnValue; 
+    }
 
 }
+
+
+
+
+
+
+
