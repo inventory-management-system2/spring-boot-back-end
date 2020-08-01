@@ -19,7 +19,11 @@ public class ProductContollerTest {
 	
 	@Test
 	public void shouldCreateProduct() {
-		fail("this test should fail");
+		ProductRequest request = new ProductRequest("CD", 1, 7.99, "Music", "asdf.jpg");
+		
+		ProductResponse response = controller.createProduct(request);
+		
+		assertThat(request).isEqualToComparingFieldByField(response);
 
 	}
 	
