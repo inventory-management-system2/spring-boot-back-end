@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 
 @SpringBootTest
@@ -16,7 +17,7 @@ public class UpdateQuantityTest {
 	
 	@Test
 	public void testUpdateQuantity() {
-		ProductRequest increase = new ProductRequest("MacBookPro",5);
+		ProductEntity increase = new ProductEntity("MacBookPro",5);
 		UpdateQuantity.getInstance().calculateQuantity(10, increase);
 		int response = increase.getQuantity();
 		assertEquals(15,response);
