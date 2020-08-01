@@ -33,11 +33,11 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductResponse updateProduct(@PathVariable String productId, @RequestBody ProductRequest productRequest){
+    public ProductResponse updateProduct(@PathVariable String serialNumber, @RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(productRequest, productDto);
 
-        ProductDto updatedProduct = productService.updateProduct(productId, productDto);
+        ProductDto updatedProduct = productService.updateProduct(serialNumber, productDto);
 
         ProductResponse returnValue = new ProductResponse();
         BeanUtils.copyProperties(updatedProduct, returnValue);
@@ -45,9 +45,9 @@ public class ProductController {
     }
     
     @PutMapping("/quantity/{productId}")
-    public ProductResponse updateQuantity(@PathVariable String productId, @RequestBody ProductRequest productRequestQty) {
+    public ProductResponse updateQuantity(@PathVariable String serialNumber, @RequestBody ProductRequest productRequestQty) {
     	
-    	ProductEntity productEntity = productService.updateQuantityProduct(productId, productRequestQty); 
+    	ProductEntity productEntity = productService.updateQuantityProduct(serialNumber, productRequestQty); 
     	
     	ProductResponse returnValue = new ProductResponse();
     	BeanUtils.copyProperties(productEntity, returnValue);
