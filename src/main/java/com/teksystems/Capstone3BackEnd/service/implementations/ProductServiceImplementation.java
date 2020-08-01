@@ -22,8 +22,8 @@ public class ProductServiceImplementation implements ProductService {
 	}
 
 	@Override
-	public ProductDto updateProduct(String productId, ProductDto productDto) {
-		ProductEntity updatedProduct = productRepository.findByProductId(productId);
+	public ProductDto updateProduct(String serialNumber, ProductDto productDto) {
+		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
 		BeanUtils.copyProperties(productDto, updatedProduct);
 		ProductEntity productEntity = productRepository.save(updatedProduct);
 
@@ -46,8 +46,8 @@ public class ProductServiceImplementation implements ProductService {
 	}
 
 	@Override
-	public ProductEntity updateQuantityProduct(String productId, ProductRequest productRequestQty) {
-		ProductEntity productEntity = productRepository.findByProductId(productId);
+	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
+		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
 		if (productRequestQty.getQuantity() < 1) {
 			return productEntity;
 		}

@@ -15,11 +15,7 @@ public class ProductContollerTest {
 	
 	@Autowired
 	ProductController controller;
-//	this.productName = productName;
-//        this.quantity = quantity;
-//        this.price = price;
-//        this.category = category;
-//        this.imageUrl = imageUrl;
+
 	
 	@Test
 	public void shouldCreateProduct() {
@@ -28,6 +24,7 @@ public class ProductContollerTest {
 		ProductResponse response = controller.createProduct(request);
 		
 		assertThat(request).isEqualToComparingFieldByField(response);
+
 	}
 	
 	
@@ -81,6 +78,8 @@ public class ProductContollerTest {
 		assertEquals(10, response.getQuantity()); 
 		
 	}
+	
+	
 	
 	
 
