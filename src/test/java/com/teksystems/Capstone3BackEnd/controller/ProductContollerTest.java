@@ -15,10 +15,15 @@ public class ProductContollerTest {
 	
 	@Autowired
 	ProductController controller;
+//	this.productName = productName;
+//        this.quantity = quantity;
+//        this.price = price;
+//        this.category = category;
+//        this.imageUrl = imageUrl;
 	
 	@Test
 	public void shouldCreateProduct() {
-		ProductRequest request = new ProductRequest("CD", 1);
+		ProductRequest request = new ProductRequest("CD", 1, 7.99, "Music", "asdf.jpg");
 		
 		ProductResponse response = controller.createProduct(request);
 		
@@ -29,13 +34,13 @@ public class ProductContollerTest {
 	@Test
 	public void shouldUpdateProduct() {
 		
-		ProductRequest oldProduct = new ProductRequest("MacBookPro", 2); 
+		ProductRequest oldProduct = new ProductRequest("MacBookPro", 2, 200.00, "Computer", "wqer.jpg");
 		
 		ProductResponse createdProduct = controller.createProduct(oldProduct);
 		
 		ProductRequest updatedProduct = new ProductRequest("Windows Dell", 9); 
 		
-		ProductResponse response = controller.updateProduct(createdProduct.getProductId(), updatedProduct); 
+		ProductResponse response = controller.updateProduct(createdProduct.getSerialNumber(), updatedProduct);
 		
 		assertThat(updatedProduct).isEqualToComparingFieldByField(response); 
 		
@@ -50,7 +55,7 @@ public class ProductContollerTest {
 		
 		ProductRequest updatedProduct = new ProductRequest("MacBook Pro", 100);
 		
-		ProductResponse response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		ProductResponse response = controller.updateQuantity(createdProduct.getSerialNumber(), updatedProduct);
 		
 		assertEquals(110, response.getQuantity()); 
 		
@@ -65,13 +70,13 @@ public class ProductContollerTest {
 		
 		ProductRequest updatedProduct = new ProductRequest("MacBook Pro", 0);
 		
-		ProductResponse response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		ProductResponse response = controller.updateQuantity(createdProduct.getSerialNumber(), updatedProduct);
 		
 		assertEquals(response.getQuantity(), 10); 
 		
 		updatedProduct = new ProductRequest("MacBook Pro", -1);
 		
-		response = controller.updateQuantity(createdProduct.getProductId(), updatedProduct);
+		response = controller.updateQuantity(createdProduct.getSerialNumber(), updatedProduct);
 		
 		assertEquals(10, response.getQuantity()); 
 		
