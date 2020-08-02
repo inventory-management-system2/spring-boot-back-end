@@ -37,6 +37,10 @@ public class ProductEntity {
 		this.productName = productName;
 	}
 
+	public Long getId(){
+		return id;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}

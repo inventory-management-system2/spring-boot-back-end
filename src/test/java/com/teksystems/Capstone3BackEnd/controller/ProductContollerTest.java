@@ -2,8 +2,11 @@ package com.teksystems.Capstone3BackEnd.controller;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,6 +27,20 @@ public class ProductContollerTest {
 		ProductResponse response = controller.createProduct(request);
 		
 		assertThat(request).isEqualToComparingFieldByField(response);
+
+	}
+
+	@Test
+	public void shouldUpdateNotCreateProductThatAlreadyExists(){
+		ProductRequest request = new ProductRequest("CD", 1);
+		ProductEntity product = new ProductEntity();
+		BeanUtils.copyProperties(request, product);
+		long id = product.getId();
+		ProductRequest otherRequest = new ProductRequest("CD", 1, 7.99, "Music", "asdf.jpg");
+		ProductEntity secondProduct = new ProductEntity();
+		BeanUtils.copyProperties(otherRequest, secondProduct);
+		long second = secondProduct.getId();
+		assertNotEquals(id, second);
 
 	}
 	
@@ -56,7 +73,7 @@ public class ProductContollerTest {
 		
 		assertEquals(110, response.getQuantity());
 	}
-	
+
 	@Test
 	public void shouldNotUpdateProductQuantityForLessThanOne() {
 	
