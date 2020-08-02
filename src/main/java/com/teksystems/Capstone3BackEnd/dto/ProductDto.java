@@ -11,8 +11,18 @@ public class ProductDto {
     private String category;
     private String imageUrl;
 
-    public ProductDto(String productName, int quantity, String serialNumber, Double price,
+    public ProductDto(Long id, String productName, int quantity, String serialNumber, Double price,
                          String category, String imageUrl) {
+        this.id = id;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.serialNumber = serialNumber;
+        this.price = price;
+        this.category = category;
+        this.imageUrl = imageUrl;
+    }
+    public ProductDto(String productName, int quantity, String serialNumber, Double price,
+                      String category, String imageUrl) {
         this.productName = productName;
         this.quantity = quantity;
         this.serialNumber = serialNumber;
@@ -21,7 +31,18 @@ public class ProductDto {
         this.imageUrl = imageUrl;
     }
 
+
+    public ProductDto(String productName, int quantity){
+        this.productName = productName;
+        this.quantity = quantity;
+    }
+
     public ProductDto(){}
+
+
+    public Long getId() {
+        return id;
+    }
 
     public String getProductName() {
         return productName;

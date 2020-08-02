@@ -2,7 +2,6 @@ package com.teksystems.Capstone3BackEnd.controller;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
 
 @SpringBootTest
-public class ProductContollerTest {
+public class ProductControllerTest {
 	
 	@Autowired
 	ProductController controller;
@@ -30,21 +29,7 @@ public class ProductContollerTest {
 
 	}
 
-	@Test
-	public void shouldUpdateNotCreateProductThatAlreadyExists(){
-		ProductRequest request = new ProductRequest("CD", 1);
-		ProductEntity product = new ProductEntity();
-		BeanUtils.copyProperties(request, product);
-		long id = product.getId();
-		ProductRequest otherRequest = new ProductRequest("CD", 1, 7.99, "Music", "asdf.jpg");
-		ProductEntity secondProduct = new ProductEntity();
-		BeanUtils.copyProperties(otherRequest, secondProduct);
-		long second = secondProduct.getId();
-		assertNotEquals(id, second);
 
-	}
-	
-	
 	@Test
 	public void shouldUpdateProduct() {
 		

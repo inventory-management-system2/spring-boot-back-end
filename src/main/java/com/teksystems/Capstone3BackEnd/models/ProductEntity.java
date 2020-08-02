@@ -1,17 +1,16 @@
 package com.teksystems.Capstone3BackEnd.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ProductEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false, unique = true)
 	private String productName;
 	private int quantity;
+	@Column(nullable = false, unique = true)
 	private String serialNumber;
 	private Double price;
 	private String category;
@@ -25,6 +24,11 @@ public class ProductEntity {
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
+	}
+
+	public ProductEntity(String productName, int quantity){
+		this.productName = productName;
+		this.quantity = quantity;
 	}
 
 	public ProductEntity(){}

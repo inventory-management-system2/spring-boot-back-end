@@ -34,16 +34,21 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
+		if (productDto.getPrice() != null){
+			String serialNumber = productDto.getSerialNumber();
+			updateProduct(serialNumber, productDto);
+		}
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
-		newProduct.setSerialNumber(utils.generateUserId(15));
+		newProduct.setSerialNumber(utils.generateSerialNumber(13));
 
 		ProductEntity storedProduct = productRepository.save(newProduct);
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(storedProduct, returnValue);
 		return returnValue;
 	}
+
 
 	@Override
 	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
