@@ -14,7 +14,10 @@ public class ProductRequest {
         this.category = category;
         this.imageUrl = imageUrl;
     }
-    public ProductRequest(String productName, int quantity){}
+    public ProductRequest(String productName, int quantity){
+        this.productName = productName;
+        this.quantity = quantity;
+    }
 
     public ProductRequest(){}
 

@@ -54,12 +54,11 @@ public class ProductContollerTest {
 		
 		ProductResponse response = controller.updateQuantity(createdProduct.getSerialNumber(), updatedProduct);
 		
-		assertEquals(110, response.getQuantity()); 
-		
+		assertEquals(110, response.getQuantity());
 	}
 	
 	@Test
-	public void shouldNotupdateProductQuantityForLessThanOne() {
+	public void shouldNotUpdateProductQuantityForLessThanOne() {
 	
 		ProductRequest oldProduct = new ProductRequest("MacBook Pro", 10);
 		
