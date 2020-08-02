@@ -1,27 +1,37 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
-import org.springframework.beans.BeanUtils;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("products")
 public class ProductController {
     private final ProductService productService;
 
     public ProductController(ProductService productService){
         this.productService = productService;
     }
-    @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE },
-            produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE }
-    )
-
-    public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
+    @GetMapping("/")
+    public ModelAndView display(@ModelAttribute("product") ProductRequest productRequest) {
+    	return new ModelAndView("index");
+    }
+    @PostMapping( "/product")
+    public ModelAndView createProduct(@ModelAttribute("product") ProductRequest productRequest,BindingResult result){
+    	
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(productRequest, productDto);
 
@@ -29,7 +39,7 @@ public class ProductController {
 
         ProductResponse returnValue = new ProductResponse();
         BeanUtils.copyProperties(createdProduct, returnValue);
-        return returnValue;
+        return new ModelAndView("index");
     }
 
     @PutMapping("/{id}")
