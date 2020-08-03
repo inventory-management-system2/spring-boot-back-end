@@ -48,21 +48,12 @@ public class ProductServiceImplementation implements ProductService {
 		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
 		ProductEntity oldProduct = new ProductEntity();
 		BeanUtils.copyProperties(updatedProduct, oldProduct);
-		System.out.println("------------------------------------------------------------------");
-		System.out.println("OLD " + updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName());
-		System.out.println("------------------------------------------------------------------");
 
 		BeanUtils.copyProperties(productDto, updatedProduct);
-
-		System.out.println("NEW " + updatedProduct.getQuantity() + "  " + updatedProduct.getSerialNumber() + "  " + updatedProduct.getProductName() + "  " + updatedProduct.getPrice() + "  ");
-		System.out.println("------------------------------------------------------------------");
 
 		updatedProduct.setId(oldProduct.getId());
 		updatedProduct.setSerialNumber(oldProduct.getSerialNumber());
 		ProductEntity productEntity = productRepository.save(updatedProduct);
-		System.out.println("------------------------------------------------------------------");
-		System.out.println("SAVED " + productEntity.getQuantity() + "  " + productEntity.getId() + "  " + productEntity.getProductName() + "  " + productEntity.getPrice() + "  ");
-		System.out.println("------------------------------------------------------------------");
 
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(productEntity, returnValue);
@@ -72,10 +63,10 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
-		if (productRepository.findByProductName(productDto.getProductName()) == null){
-			String serialNumber = productDto.getSerialNumber();
-			return updateProduct(serialNumber, productDto);
-		}
+//		if (productRepository.findByProductName(productDto.getProductName()) != null){
+//			String serialNumber = productDto.getSerialNumber();
+//			return updateProduct(serialNumber, productDto);
+//		}
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
