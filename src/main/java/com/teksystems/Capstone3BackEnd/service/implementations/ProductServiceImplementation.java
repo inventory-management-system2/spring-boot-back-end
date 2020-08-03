@@ -29,7 +29,7 @@ public class ProductServiceImplementation implements ProductService {
 	}
 
 	@Override
-	public List<ProductDto> getAllUsers(int page, int limit){
+	public List<ProductDto> getAllProducts(int page, int limit){
 		List<ProductEntity> productList = new ArrayList<ProductEntity>();
 		if (page > 0) page --;
 		Pageable pageRequest = PageRequest.of(page, limit);
@@ -42,6 +42,11 @@ public class ProductServiceImplementation implements ProductService {
 			returnValue.add(productDto);
 		}
 		return returnValue;
+	}
+
+	@Override
+	public ProductDto getProduct(String serialNumber){
+
 	}
 
 	@Override
