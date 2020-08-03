@@ -9,6 +9,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("products")
 @CrossOrigin(origins="http://localhost:3000")
@@ -30,10 +33,11 @@ public class ProductController {
 
         ProductResponse returnValue = new ProductResponse();
         BeanUtils.copyProperties(createdProduct, returnValue);
+        System.out.println(returnValue);
         return returnValue;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{serialNumber}")
     public ProductResponse updateProduct(@PathVariable String serialNumber, @RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(productRequest, productDto);
@@ -45,14 +49,25 @@ public class ProductController {
         return returnValue;
     }
     
-    @PutMapping("/quantity/{productId}")
+    @PutMapping("/quantity/{serialNumber}")
     public ProductResponse updateQuantity(@PathVariable String serialNumber, @RequestBody ProductRequest productRequestQty) {
-    	
     	ProductEntity productEntity = productService.updateQuantityProduct(serialNumber, productRequestQty); 
     	
     	ProductResponse returnValue = new ProductResponse();
     	BeanUtils.copyProperties(productEntity, returnValue);
     	return returnValue; 
+    }
+
+    @GetMapping
+    public List<ProductResponse> getAllUser(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){
+        List<ProductDto> productList = productService.getAllUsers(page, limit);
+        List<ProductResponse> returnValue = new ArrayList<ProductResponse>();
+        for (ProductDto eachProduct : productList){
+            ProductResponse productResponse = new ProductResponse();
+            BeanUtils.copyProperties(eachProduct, productResponse);
+            returnValue.add(productResponse);
+        }
+        return returnValue;
     }
 
 }
