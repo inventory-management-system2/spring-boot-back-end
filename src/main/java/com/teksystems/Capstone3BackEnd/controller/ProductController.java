@@ -60,7 +60,7 @@ public class ProductController {
 
     @GetMapping
     public List<ProductResponse> getAllUser(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){
-        List<ProductDto> productList = productService.getAllUsers(page, limit);
+        List<ProductDto> productList = productService.getAllProducts(page, limit);
         List<ProductResponse> returnValue = new ArrayList<ProductResponse>();
         for (ProductDto eachProduct : productList){
             ProductResponse productResponse = new ProductResponse();
@@ -68,6 +68,13 @@ public class ProductController {
             returnValue.add(productResponse);
         }
         return returnValue;
+    }
+
+    @GetMapping("/{serialNumber}")
+    public ProductResponse getUsers(@PathVariable String serialNumber){
+        ProductDto productDto = productService.getProduct(serialNumber);
+
+
     }
 
 }
