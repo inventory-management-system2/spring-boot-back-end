@@ -24,8 +24,6 @@ public class ProductController {
             produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE }
     )
 
-
-//    @PostMapping("")
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(productRequest, productDto);

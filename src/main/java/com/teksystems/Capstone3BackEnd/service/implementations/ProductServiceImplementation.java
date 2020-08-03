@@ -47,19 +47,23 @@ public class ProductServiceImplementation implements ProductService {
 	public ProductDto updateProduct(String serialNumber, ProductDto productDto) {
 		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
 		System.out.println("------------------------------------------------------------------");
-		System.out.println(updatedProduct.getQuantity() + updatedProduct.getId() + updatedProduct.getProductName());
+		System.out.println(updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName());
 		System.out.println("------------------------------------------------------------------");
 		BeanUtils.copyProperties(productDto, updatedProduct);
+		System.out.println(updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName() + "  " + updatedProduct.getPrice() + "  ");
+		System.out.println("------------------------------------------------------------------");
 		ProductEntity productEntity = productRepository.save(updatedProduct);
 
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(productEntity, returnValue);
+		System.out.println("------------------------------------------------------------------");
+		System.out.println(returnValue.getQuantity() + "  " + returnValue.getId() + "  " + returnValue.getProductName() + "  " + returnValue.getPrice() + "  ");
+		System.out.println("------------------------------------------------------------------");
 		return returnValue;
 	}
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
-
 		if (productRepository.findByProductName(productDto.getProductName()) == null){
 			String serialNumber = productDto.getSerialNumber();
 			return updateProduct(serialNumber, productDto);

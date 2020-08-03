@@ -17,7 +17,7 @@ public class Utils {
     public String generateRandomString(int length){
         StringBuilder returnValue = new StringBuilder(length);
         for (int i = 0; i< length; i++){
-            if (i > 0 && i % 5 == 0){
+            if (i > 4 && i % 5 == 0){
                 returnValue.append("-");
             }
             returnValue.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
