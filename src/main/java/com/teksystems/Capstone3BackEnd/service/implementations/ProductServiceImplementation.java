@@ -65,17 +65,12 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
 		Optional<ProductEntity> checker = productRepository.findByProductName(productDto.getProductName());
-		System.out.println("--------------------------------------------------");
-		System.out.println(checker.get().toString());
 		if (checker.isPresent()){
-			System.out.println("--------------------------------------------------");
 			if (checker.get().getPrice() == null && checker.get().getQuantity() == 0){
-				System.out.println("--------------------------------------------------");
 				String serialNumber = checker.get().getSerialNumber();
 				return updateProduct(serialNumber, productDto);
 			}
 		}
-
 
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);

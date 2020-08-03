@@ -19,7 +19,7 @@ public class ProductServiceImplementationTest {
     @Autowired
     ProductServiceImplementation implementation;
     Utils utils;
-/*
+
     @Test
     public void shouldUpdateNotCreateProductThatAlreadyExists(){
       String newSerialNumber = utils.generateSerialNumber(15);
@@ -32,5 +32,5 @@ public class ProductServiceImplementationTest {
 //        assertEquals(implementedDto.getId(), secondImplementedDto.getId());
 
     }
-*/
+
 }
