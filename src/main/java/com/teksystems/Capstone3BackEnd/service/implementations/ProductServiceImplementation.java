@@ -48,7 +48,7 @@ public class ProductServiceImplementation implements ProductService {
 		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
 		ProductEntity oldProduct = new ProductEntity();
 		BeanUtils.copyProperties(updatedProduct, oldProduct);
-
+		
 		BeanUtils.copyProperties(productDto, updatedProduct);
 
 		updatedProduct.setId(oldProduct.getId());
