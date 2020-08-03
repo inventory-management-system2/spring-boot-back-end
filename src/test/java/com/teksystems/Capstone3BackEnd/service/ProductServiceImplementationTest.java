@@ -22,7 +22,7 @@ public class ProductServiceImplementationTest {
 
     @Test
     public void shouldUpdateNotCreateProductThatAlreadyExists(){
-      ProductDto newDto = new ProductDto("Moolo", 5, 9.99, "Music", "asdf.jpg");
+      ProductDto newDto = new ProductDto("Momomo", 5, 9.99, "Music", "asdf.jpg");
       ProductDto secondImplementedDto = serviceImpl.createProduct(newDto);
       assertEquals(secondImplementedDto.getPrice(),9.99);
 
