@@ -15,7 +15,7 @@ public class ProductEntity {
 	private Double price;
 	private String category;
 	private String imageUrl;
-	
+
 	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
 			String category, String imageUrl) {
 		this.productName = productName;
@@ -43,6 +43,10 @@ public class ProductEntity {
 
 	public Long getId(){
 		return id;
+	}
+
+	public void setId(Long id){
+		this.id = id;
 	}
 
 	public int getQuantity() {

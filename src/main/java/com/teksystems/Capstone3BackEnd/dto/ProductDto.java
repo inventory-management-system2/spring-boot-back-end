@@ -1,7 +1,5 @@
 package com.teksystems.Capstone3BackEnd.dto;
 
-
-
 public class ProductDto {
     private Long id;
     private String productName;

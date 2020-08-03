@@ -46,19 +46,27 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public ProductDto updateProduct(String serialNumber, ProductDto productDto) {
 		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
+		ProductEntity oldProduct = new ProductEntity();
+		BeanUtils.copyProperties(updatedProduct, oldProduct);
 		System.out.println("------------------------------------------------------------------");
-		System.out.println(updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName());
+		System.out.println("OLD " + updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName());
 		System.out.println("------------------------------------------------------------------");
+
 		BeanUtils.copyProperties(productDto, updatedProduct);
-		System.out.println(updatedProduct.getQuantity() + "  " + updatedProduct.getId() + "  " + updatedProduct.getProductName() + "  " + updatedProduct.getPrice() + "  ");
+
+		System.out.println("NEW " + updatedProduct.getQuantity() + "  " + updatedProduct.getSerialNumber() + "  " + updatedProduct.getProductName() + "  " + updatedProduct.getPrice() + "  ");
 		System.out.println("------------------------------------------------------------------");
+
+		updatedProduct.setId(oldProduct.getId());
+		updatedProduct.setSerialNumber(oldProduct.getSerialNumber());
 		ProductEntity productEntity = productRepository.save(updatedProduct);
+		System.out.println("------------------------------------------------------------------");
+		System.out.println("SAVED " + productEntity.getQuantity() + "  " + productEntity.getId() + "  " + productEntity.getProductName() + "  " + productEntity.getPrice() + "  ");
+		System.out.println("------------------------------------------------------------------");
 
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(productEntity, returnValue);
-		System.out.println("------------------------------------------------------------------");
-		System.out.println(returnValue.getQuantity() + "  " + returnValue.getId() + "  " + returnValue.getProductName() + "  " + returnValue.getPrice() + "  ");
-		System.out.println("------------------------------------------------------------------");
+
 		return returnValue;
 	}
 
