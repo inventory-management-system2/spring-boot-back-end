@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
@@ -48,7 +49,7 @@ public class ProductServiceImplementation implements ProductService {
 		ProductEntity updatedProduct = productRepository.findBySerialNumber(serialNumber);
 		ProductEntity oldProduct = new ProductEntity();
 		BeanUtils.copyProperties(updatedProduct, oldProduct);
-		
+
 		BeanUtils.copyProperties(productDto, updatedProduct);
 
 		updatedProduct.setId(oldProduct.getId());
@@ -63,10 +64,14 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
-//		if (productRepository.findByProductName(productDto.getProductName()) != null){
-//			String serialNumber = productDto.getSerialNumber();
-//			return updateProduct(serialNumber, productDto);
-//		}
+		Optional<ProductEntity> checker = productRepository.findByProductName(productDto.getProductName());
+		if (checker.isPresent()){
+			if (checker.get().getPrice() == null && checker.get().getQuantity() == 0){
+				String serialNumber = checker.get().getSerialNumber();
+				return updateProduct(serialNumber, productDto);
+			}
+		}
+
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
