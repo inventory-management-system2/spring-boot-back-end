@@ -59,7 +59,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductResponse> getAllUser(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){
+    public List<ProductResponse> getAllProducts(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){
         List<ProductDto> productList = productService.getAllProducts(page, limit);
         List<ProductResponse> returnValue = new ArrayList<ProductResponse>();
         for (ProductDto eachProduct : productList){
@@ -71,10 +71,11 @@ public class ProductController {
     }
 
     @GetMapping("/{serialNumber}")
-    public ProductResponse getUsers(@PathVariable String serialNumber){
+    public ProductResponse getProduct(@PathVariable String serialNumber){
         ProductDto productDto = productService.getProduct(serialNumber);
-
-
+        ProductResponse productResponse = new ProductResponse();
+        BeanUtils.copyProperties(productDto, productResponse);
+        return productResponse;
     }
 
 }

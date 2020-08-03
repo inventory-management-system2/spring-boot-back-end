@@ -46,7 +46,10 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto getProduct(String serialNumber){
-
+		ProductEntity product = productRepository.findBySerialNumber(serialNumber);
+		ProductDto productDto = new ProductDto();
+		BeanUtils.copyProperties(product, productDto);
+		return productDto;
 	}
 
 	@Override
