@@ -19,7 +19,7 @@ public class ProductDto {
         this.category = category;
         this.imageUrl = imageUrl;
     }
-    public ProductDto(String productName, int quantity, String serialNumber, Double price,
+    public ProductDto(String productName, int quantity, Double price,
                       String category, String imageUrl) {
         this.productName = productName;
         this.quantity = quantity;

@@ -17,19 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProductServiceImplementationTest {
 
     @Autowired
-    ProductServiceImplementation implementation;
-    Utils utils;
+    ProductServiceImplementation serviceImpl;
+
 
     @Test
     public void shouldUpdateNotCreateProductThatAlreadyExists(){
-      String newSerialNumber = utils.generateSerialNumber(15);
-//        ProductDto oldDto = new ProductDto("CD", 1);
-//        ProductDto implementedDto = implementation.createProduct(oldDto);
+      ProductDto newDto = new ProductDto("Moolo", 5, 9.99, "Music", "asdf.jpg");
+      ProductDto secondImplementedDto = serviceImpl.createProduct(newDto);
+      assertEquals(secondImplementedDto.getPrice(),9.99);
 
-        ProductDto newDto = new ProductDto("CD", 5, newSerialNumber, 9.99, "Music", "asdf.jpg");
-        ProductDto secondImplementedDto = implementation.createProduct(newDto);
-        assertEquals(secondImplementedDto.getPrice(),9.99);
-//        assertEquals(implementedDto.getId(), secondImplementedDto.getId());
 
     }
 
