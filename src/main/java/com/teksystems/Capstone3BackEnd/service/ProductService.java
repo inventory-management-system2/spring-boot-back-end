@@ -13,8 +13,8 @@ import java.util.List;
 
 
 public interface ProductService {
-//    ProductDto getProduct(String productId);
-    List<ProductDto> getAllUsers(int page, int limit);
+    ProductDto getProduct(String productId);
+    List<ProductDto> getAllProducts(int page, int limit);
     ProductDto createProduct(ProductDto productDto);
     ProductDto updateProduct(String serialNumber, ProductDto productDto);
 	
