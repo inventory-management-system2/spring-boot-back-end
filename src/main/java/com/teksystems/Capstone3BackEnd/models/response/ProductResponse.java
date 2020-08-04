@@ -7,9 +7,11 @@ public class ProductResponse {
     private Double price;
     private String category;
     private String imageUrl;
+    private String thumbnail;
+    private String description;
 
     public ProductResponse(String productName, int quantity, String serialNumber, Double price,
-                         String category, String imageUrl) {
+                         String category, String imageUrl, String thumbnail, String description) {
         this.productName = productName;
         this.quantity = quantity;
         this.serialNumber = serialNumber;
@@ -68,4 +70,19 @@ public class ProductResponse {
         this.imageUrl = imageUrl;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -6,6 +6,18 @@ public class ProductRequest {
     private Double price;
     private String category;
     private String imageUrl;
+    private String thumbnail;
+    private String description;
+
+    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl, String thumbnail, String description) {
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.thumbnail = thumbnail;
+        this.description = description;
+    }
 
     public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl) {
         this.productName = productName;
@@ -17,6 +29,10 @@ public class ProductRequest {
     public ProductRequest(String productName, int quantity){
         this.productName = productName;
         this.quantity = quantity;
+    }
+
+    public ProductRequest(String productName){
+        this.productName = productName;
     }
 
     public ProductRequest(){}
