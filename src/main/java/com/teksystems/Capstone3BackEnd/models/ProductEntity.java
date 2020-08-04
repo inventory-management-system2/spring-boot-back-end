@@ -1,6 +1,16 @@
 package com.teksystems.Capstone3BackEnd.models;
 
-import javax.persistence.*;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class ProductEntity {
@@ -15,6 +25,35 @@ public class ProductEntity {
 	private Double price;
 	private String category;
 	private String imageUrl;
+	private String thumbnail;
+	private String description;
+	@Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date createdAt;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date updatedAt;
+
+	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
+						 String category, String imageUrl, String thumbnail, String description) {
+		this.productName = productName;
+		this.quantity = quantity;
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+	}
+	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
+						 String category, String imageUrl, String description) {
+		this.productName = productName;
+		this.quantity = quantity;
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.description = description;
+	}
 
 	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
 			String category, String imageUrl) {
@@ -88,6 +127,30 @@ public class ProductEntity {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
+
 }
 
