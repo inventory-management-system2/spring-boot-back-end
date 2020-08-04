@@ -33,41 +33,17 @@ public class ProductEntity {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
 
-	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
-						 String category, String imageUrl, String thumbnail, String description) {
+    
+
+	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
+			String thumbnail, String description) {
 		this.productName = productName;
 		this.quantity = quantity;
-		this.serialNumber = serialNumber;
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
-	}
-	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
-						 String category, String imageUrl, String description) {
-		this.productName = productName;
-		this.quantity = quantity;
-		this.serialNumber = serialNumber;
-		this.price = price;
-		this.category = category;
-		this.imageUrl = imageUrl;
-		this.description = description;
-	}
-
-	public ProductEntity(String productName, int quantity, String serialNumber, Double price,
-			String category, String imageUrl) {
-		this.productName = productName;
-		this.quantity = quantity;
-		this.serialNumber = serialNumber;
-		this.price = price;
-		this.category = category;
-		this.imageUrl = imageUrl;
-	}
-
-	public ProductEntity(String productName, int quantity){
-		this.productName = productName;
-		this.quantity = quantity;
 	}
 
 	public ProductEntity(){}
@@ -143,6 +119,7 @@ public class ProductEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
