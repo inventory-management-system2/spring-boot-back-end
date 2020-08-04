@@ -1,20 +1,35 @@
 package com.teksystems.Capstone3BackEnd.service;
 
-import com.teksystems.Capstone3BackEnd.controller.ProductController;
-import com.teksystems.Capstone3BackEnd.dto.ProductDto;
-import com.teksystems.Capstone3BackEnd.models.ProductEntity;
-import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
-import com.teksystems.Capstone3BackEnd.service.implementations.ProductServiceImplementation;
-import com.teksystems.Capstone3BackEnd.utils.Utils;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.service.implementations.ProductServiceImplementation;
 
 @SpringBootTest
 public class ProductServiceImplementationTest {
 
-  
+
+	@Mock
+	private ProductServiceImplementation mockProductService;
+
+	@Test
+	public void shouldCreateProduct() {
+
+		ProductDto newDto = new ProductDto("momo", 0);
+
+		when(mockProductService.createProduct(newDto)).thenReturn(new ProductDto("momo", 0));
+
+	}
+
+	@Test
+	public void shouldUpdateNotCreateProductThatAlreadyExists() {
+		
+		
+	}
+
+
 }
