@@ -32,10 +32,9 @@ public class ProductController {
         BeanUtils.copyProperties(productRequest, productDto);
 
         ProductDto createdProduct = productService.createProduct(productDto);
-
+        
         ProductResponse returnValue = new ProductResponse();
         BeanUtils.copyProperties(createdProduct, returnValue);
-        System.out.println(returnValue);
         return returnValue;
     }
 
