@@ -10,15 +10,6 @@ public class ProductResponse {
     private String thumbnail;
     private String description;
 
-    public ProductResponse(String productName, int quantity, String serialNumber, Double price,
-                         String category, String imageUrl, String thumbnail, String description) {
-        this.productName = productName;
-        this.quantity = quantity;
-        this.serialNumber = serialNumber;
-        this.price = price;
-        this.category = category;
-        this.imageUrl = imageUrl;
-    }
 
     public ProductResponse(){}
 
