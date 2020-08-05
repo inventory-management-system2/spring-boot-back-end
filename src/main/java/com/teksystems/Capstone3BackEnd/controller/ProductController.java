@@ -1,21 +1,36 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
-import com.teksystems.Capstone3BackEnd.dto.ProductDto;
-import com.teksystems.Capstone3BackEnd.models.ProductEntity;
-import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
-import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
-import com.teksystems.Capstone3BackEnd.service.ProductService;
-import org.springframework.beans.BeanUtils;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
+import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
+import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
+import com.teksystems.Capstone3BackEnd.service.ProductService;
+import com.teksystems.Capstone3BackEnd.service.RegionService;
+
 @RestController
 @RequestMapping("products")
-@CrossOrigin(origins="http://64.227.88.54:3000")
+@CrossOrigin(origins="http://localhost:3000")
 public class ProductController {
+	
+	@Autowired
+	private RegionService regionService;
+	
     private final ProductService productService;
 
     public ProductController(ProductService productService){
@@ -49,12 +64,9 @@ public class ProductController {
     }
     
     @PutMapping("/quantity/{serialNumber}")
-    public ProductResponse updateQuantity(@PathVariable String serialNumber, @RequestBody ProductRequest productRequestQty) {
-    	ProductEntity productEntity = productService.updateQuantityProduct(serialNumber, productRequestQty); 
-    	
-    	ProductResponse returnValue = new ProductResponse();
-    	BeanUtils.copyProperties(productEntity, returnValue);
-    	return returnValue; 
+    public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity regionEntity) {
+    	RegionEntity region = regionService.updateQuantity(regionEntity);
+    	return region; 
     }
 
     @GetMapping

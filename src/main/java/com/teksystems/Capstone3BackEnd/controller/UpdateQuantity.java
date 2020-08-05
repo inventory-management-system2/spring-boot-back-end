@@ -1,8 +1,6 @@
 package com.teksystems.Capstone3BackEnd.controller;
 
-import com.teksystems.Capstone3BackEnd.dto.ProductDto;
-import com.teksystems.Capstone3BackEnd.models.ProductEntity;
-import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
 public class UpdateQuantity {
 	private volatile static UpdateQuantity updateQuantity;
@@ -17,10 +15,10 @@ public class UpdateQuantity {
 		return updateQuantity;
 	}
 	
-	public ProductEntity calculateQuantity(int quantity, ProductEntity productEntity) {
+	public RegionEntity calculateQuantity(int quantity,RegionEntity regionEntity) {
 		int total;
-		total = productEntity.getQuantity()+quantity;
-		productEntity.setQuantity(total);
-		return productEntity;
+		total = regionEntity.getQuantity()+quantity;
+		regionEntity.setQuantity(total);
+		return regionEntity;
 	}
 }
