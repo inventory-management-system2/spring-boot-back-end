@@ -14,13 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("products")
-<<<<<<< HEAD
-
-@CrossOrigin(origins="http://64.227.88.54:3000")
-
-=======
 @CrossOrigin(origins="http://localhost:3000")
->>>>>>> 6a60c7542bcf729601b6163e23564a41e575f37d
+
 public class ProductController {
     private final ProductService productService;
 
