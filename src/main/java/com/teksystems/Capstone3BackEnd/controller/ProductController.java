@@ -65,7 +65,9 @@ public class ProductController {
     
     @PutMapping("/quantity/{serialNumber}")
     public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity regionEntity) {
-    	RegionEntity region = regionService.updateQuantity(regionEntity);
+    	ProductDto productDto = productService.getProduct(serialNumber);
+    	RegionEntity region = regionService.updateQuantity(productDto,regionEntity);
+    	
     	return region; 
     }
 

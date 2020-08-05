@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.teksystems.Capstone3BackEnd.controller.UpdateQuantity;
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
@@ -80,7 +79,6 @@ public class ProductServiceImplementation implements ProductService {
 		BeanUtils.copyProperties(storedProduct, returnValue);
 		return returnValue;
 	}
-
 
 	@Override
 	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
