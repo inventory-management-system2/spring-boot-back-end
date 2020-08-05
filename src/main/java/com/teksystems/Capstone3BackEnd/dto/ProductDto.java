@@ -10,6 +10,9 @@ public class ProductDto {
     private String imageUrl;
     private String thumbnail;
     private String description;
+    private String regionNE; 
+    private String regionSE; 
+    private String regionSW; 
 
 
     public ProductDto(){}
@@ -87,5 +90,37 @@ public class ProductDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public String getRegionNE() {
+		return regionNE;
+	}
+
+
+	public void setRegionNE(String regionNE) {
+		this.regionNE = regionNE;
+	}
+
+
+	public String getRegionSE() {
+		return regionSE;
+	}
+
+
+	public void setRegionSE(String regionSE) {
+		this.regionSE = regionSE;
+	}
+
+
+	public String getRegionSW() {
+		return regionSW;
+	}
+
+
+	public void setRegionSW(String regionSW) {
+		this.regionSW = regionSW;
+	}
+	
+	
     
 }

@@ -9,6 +9,9 @@ public class ProductResponse {
     private String imageUrl;
     private String thumbnail;
     private String description;
+    private String regionNE; 
+    private String regionSE; 
+    private String regionSW; 
 
 
     public ProductResponse(){}
@@ -76,4 +79,30 @@ public class ProductResponse {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	public String getRegionNE() {
+		return regionNE;
+	}
+
+	public void setRegionNE(String regionNE) {
+		this.regionNE = regionNE;
+	}
+
+	public String getRegionSE() {
+		return regionSE;
+	}
+
+	public void setRegionSE(String regionSE) {
+		this.regionSE = regionSE;
+	}
+
+	public String getRegionSW() {
+		return regionSW;
+	}
+
+	public void setRegionSW(String regionSW) {
+		this.regionSW = regionSW;
+	}
+    
+    
 }
