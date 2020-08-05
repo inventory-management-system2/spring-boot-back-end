@@ -13,23 +13,23 @@ import com.teksystems.Capstone3BackEnd.service.implementations.ProductServiceImp
 public class ProductServiceImplementationTest {
 
 
-	@Mock
-	private ProductServiceImplementation mockProductService;
-
-	@Test
-	public void shouldCreateProduct() {
-
-		ProductDto newDto = new ProductDto("momo", 0);
-
-		when(mockProductService.createProduct(newDto)).thenReturn(new ProductDto("momo", 0));
-
-	}
-
-	@Test
-	public void shouldUpdateNotCreateProductThatAlreadyExists() {
-		
-		
-	}
+//	@Mock
+//	private ProductServiceImplementation mockProductService;
+//
+//	@Test
+//	public void shouldCreateProduct() {
+//
+//		ProductDto newDto = new ProductDto("momo", 0);
+//
+//		when(mockProductService.createProduct(newDto)).thenReturn(new ProductDto("momo", 0));
+//
+//	}
+//
+//	@Test
+//	public void shouldUpdateNotCreateProductThatAlreadyExists() {
+//
+//
+//	}
 
 
 }
