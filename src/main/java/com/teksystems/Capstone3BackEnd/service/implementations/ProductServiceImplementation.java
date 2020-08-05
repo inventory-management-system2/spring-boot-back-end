@@ -72,13 +72,6 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
-		Optional<ProductEntity> checker = productRepository.findByProductName(productDto.getProductName());
-		if (checker.isPresent()){
-			if (checker.get().getPrice() == null && checker.get().getQuantity() == 0){
-				String serialNumber = checker.get().getSerialNumber();
-				return updateProduct(serialNumber, productDto);
-			}
-		}
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
