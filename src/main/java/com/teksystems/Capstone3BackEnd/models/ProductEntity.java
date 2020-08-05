@@ -9,9 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
@@ -37,12 +35,7 @@ public class ProductEntity {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-		name = "products_regions",
-		joinColumns = @JoinColumn(name = "product_id"),
-		inverseJoinColumns = @JoinColumn(name = "region_id")
-    )
+    @OneToMany(mappedBy="product", fetch = FetchType.LAZY)
     private List<RegionEntity> regions;
 
 	public ProductEntity(String productName, Double price, String category, String imageUrl,

@@ -1,7 +1,6 @@
 package com.teksystems.Capstone3BackEnd.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
@@ -31,13 +29,9 @@ public class RegionEntity {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-		name = "products_regions",
-		joinColumns = @JoinColumn(name = "region_id"),
-		inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<ProductEntity> products;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="product")
+    private ProductEntity product;
     
 	public RegionEntity(String regionName, int quantity) {
 		this.regionName = regionName;
@@ -77,11 +71,12 @@ public class RegionEntity {
 	
 	
     
-	public List<ProductEntity> getProducts() {
-		return products;
+	
+	public ProductEntity getProduct() {
+		return product;
 	}
-	public void setProducts(List<ProductEntity> products) {
-		this.products = products;
+	public void setProduct(ProductEntity product) {
+		this.product = product;
 	}
 	@PrePersist
     protected void onCreate(){
