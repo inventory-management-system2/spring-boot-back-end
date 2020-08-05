@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Long> {
    ProductEntity findBySerialNumber(String serialNumber);
-   Optional<ProductEntity> findByProductName(String productName);
+   ProductEntity findByProductName(String productName);
 }

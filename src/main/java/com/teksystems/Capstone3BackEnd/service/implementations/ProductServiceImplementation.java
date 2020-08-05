@@ -75,7 +75,7 @@ public class ProductServiceImplementation implements ProductService {
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
-		newProduct.setSerialNumber(utils.generateSerialNumber(13));
+		newProduct.setSerialNumber(utils.generateSerialNumber(15));
 		ProductEntity storedProduct = productRepository.save(newProduct);
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(storedProduct, returnValue);
