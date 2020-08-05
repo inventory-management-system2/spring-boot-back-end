@@ -39,7 +39,6 @@ public class ProductController {
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE },
             produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE }
     )
-
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(productRequest, productDto);
@@ -50,7 +49,6 @@ public class ProductController {
         BeanUtils.copyProperties(createdProduct, returnValue);
         return returnValue;
     }
-
     @PutMapping("/{serialNumber}")
     public ProductResponse updateProduct(@PathVariable String serialNumber, @RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
@@ -62,15 +60,18 @@ public class ProductController {
         BeanUtils.copyProperties(updatedProduct, returnValue);
         return returnValue;
     }
-    
+    @GetMapping("/quantity/{serialNumber")
+    public Iterable<RegionEntity> getAllRegions(@PathVariable String serialNumber) {
+    	Iterable<RegionEntity> regionEntity = regionService.findAll();
+    	return regionEntity;
+    	
+    }
     @PutMapping("/quantity/{serialNumber}")
     public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity regionEntity) {
     	ProductDto productDto = productService.getProduct(serialNumber);
     	RegionEntity region = regionService.updateQuantity(productDto,regionEntity);
-    	
     	return region; 
     }
-
     @GetMapping
     public List<ProductResponse> getAllProducts(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){
         List<ProductDto> productList = productService.getAllProducts(page, limit);
@@ -82,7 +83,6 @@ public class ProductController {
         }
         return returnValue;
     }
-
     @GetMapping("/{serialNumber}")
     public ProductResponse getProduct(@PathVariable String serialNumber){
         ProductDto productDto = productService.getProduct(serialNumber);

@@ -35,6 +35,11 @@ public class RegionService {
 		
 		return regionEntity;
 	}
+
+	public Iterable<RegionEntity> findAll() {
+		Iterable<RegionEntity> regionEntity = regionRepository.findAll();
+		return regionEntity;
+	}
 	
 
 	
