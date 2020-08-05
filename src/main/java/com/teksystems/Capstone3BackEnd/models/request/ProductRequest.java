@@ -9,33 +9,22 @@ public class ProductRequest {
     private String thumbnail;
     private String description;
 
-    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl, String thumbnail, String description) {
-        this.productName = productName;
-        this.quantity = quantity;
-        this.price = price;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.thumbnail = thumbnail;
-        this.description = description;
-    }
+   
 
-    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl) {
-        this.productName = productName;
-        this.quantity = quantity;
-        this.price = price;
-        this.category = category;
-        this.imageUrl = imageUrl;
-    }
-    public ProductRequest(String productName, int quantity){
-        this.productName = productName;
-        this.quantity = quantity;
-    }
+    
 
-    public ProductRequest(String productName){
-        this.productName = productName;
-    }
+    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl,
+			String thumbnail, String description) {
+		this.productName = productName;
+		this.quantity = quantity;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+	}
 
-    public ProductRequest(){}
+	public ProductRequest(){}
 
     public String getProductName() {
         return productName;
@@ -76,5 +65,22 @@ public class ProductRequest {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+    
 
 }
