@@ -19,6 +19,7 @@ public class ProductEntity {
 	private Long id;
 	@Column(nullable = false, unique = true)
 	private String productName;
+	private int quantity;
 	@Column(nullable = false, unique = true)
 	private String serialNumber;
 	private Double price;
@@ -33,12 +34,39 @@ public class ProductEntity {
     private Date updatedAt;
     private int regionNe; 
     private int regionSe; 
-    private int regionSw; 
+    private int regionSw;
 
-    
+	public ProductEntity(Long id, String productName, int quantity, Double price,  String serialNumber, String category, String imageUrl, String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+		this.id = id;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.price = price;
+		this.serialNumber = serialNumber;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.regionNe = regionNe;
+		this.regionSe = regionSe;
+		this.regionSw = regionSw;
+	}
+
+	public ProductEntity(Long id, String productName, int quantity, String serialNumber, Double price, String category, String imageUrl, String thumbnail, String description, Date createdAt, Date updatedAt) {
+		this.id = id;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 
 	public ProductEntity(String productName, Double price, String category, String imageUrl,
-			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+						 String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
 		this.productName = productName;
 		this.price = price;
 		this.category = category;
@@ -51,6 +79,7 @@ public class ProductEntity {
 	}
 
 	public ProductEntity(){}
+
 
 	public String getProductName() {
 		return productName;
