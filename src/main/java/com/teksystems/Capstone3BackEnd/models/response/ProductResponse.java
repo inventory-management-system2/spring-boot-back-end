@@ -16,6 +16,11 @@ public class ProductResponse {
 
     public ProductResponse(){}
 
+    public ProductResponse(String productName, String serialNumber) {
+        this.productName = productName;
+        this.serialNumber = serialNumber;
+    }
+
     public String getProductName() {
         return productName;
     }

@@ -19,7 +19,6 @@ public class ProductEntity {
 	private Long id;
 	@Column(nullable = false, unique = true)
 	private String productName;
-	private int quantity;
 	@Column(nullable = false, unique = true)
 	private String serialNumber;
 	private Double price;
@@ -38,10 +37,9 @@ public class ProductEntity {
 
     
 
-	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
+	public ProductEntity(String productName, Double price, String category, String imageUrl,
 			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
 		this.productName = productName;
-		this.quantity = quantity;
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
@@ -68,14 +66,6 @@ public class ProductEntity {
 
 	public void setId(Long id){
 		this.id = id;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getSerialNumber() {

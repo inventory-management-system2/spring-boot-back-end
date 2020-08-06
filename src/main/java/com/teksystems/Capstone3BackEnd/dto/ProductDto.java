@@ -18,6 +18,12 @@ public class ProductDto {
     public ProductDto(){}
 
 
+    public ProductDto(Long id, String productName, String serialNumber) {
+        this.id = id;
+        this.productName = productName;
+        this.serialNumber = serialNumber;
+    }
+
     public Long getId() {
         return id;
     }
@@ -120,7 +126,22 @@ public class ProductDto {
 	public void setRegionSw(int regionSw) {
 		this.regionSw = regionSw;
 	}
-	
-	
-    
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", price=" + price +
+                ", category='" + category + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", description='" + description + '\'' +
+                ", regionNe=" + regionNe +
+                ", regionSe=" + regionSe +
+                ", regionSw=" + regionSw +
+                '}';
+    }
 }

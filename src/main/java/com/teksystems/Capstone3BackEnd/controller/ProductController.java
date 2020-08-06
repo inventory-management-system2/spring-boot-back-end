@@ -28,9 +28,8 @@ public class ProductController {
 
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
-        System.out.println("line 30 " + productRequest.getProductName() + productRequest.getCategory() + productRequest.getPrice() + productRequest.getQuantity() + productRequest.getDescription());
         BeanUtils.copyProperties(productRequest, productDto);
-
+        System.out.println("dto from beginning of ctlr " + productDto);
         ProductDto createdProduct = productService.createProduct(productDto);
         
         ProductResponse returnValue = new ProductResponse();
