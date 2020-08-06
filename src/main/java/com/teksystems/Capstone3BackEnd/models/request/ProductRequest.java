@@ -36,7 +36,13 @@ public class ProductRequest {
         this.productName = productName;
     }
 
-    public String getProductName() {
+    
+
+	public ProductRequest(int regionNe) {
+		this.regionNe = regionNe;
+	}
+
+	public String getProductName() {
         return productName;
     }
 

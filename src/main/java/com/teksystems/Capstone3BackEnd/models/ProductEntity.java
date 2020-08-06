@@ -81,6 +81,30 @@ public class ProductEntity {
 	public ProductEntity(){}
 
 
+	
+
+	public ProductEntity(String productName) {
+		this.productName = productName;
+	}
+	
+
+	public ProductEntity(Long id, String productName, String serialNumber) {
+		this.id = id;
+		this.productName = productName;
+		this.serialNumber = serialNumber;
+	}
+
+	
+
+	
+
+	public ProductEntity(Long id, String productName, String serialNumber, int regionNe) {
+		this.id = id;
+		this.productName = productName;
+		this.serialNumber = serialNumber;
+		this.regionNe = regionNe;
+	}
+
 	public String getProductName() {
 		return productName;
 	}

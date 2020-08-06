@@ -1,22 +1,20 @@
 package com.teksystems.Capstone3BackEnd.service.implementations;
 
-import com.teksystems.Capstone3BackEnd.dto.ProductDto;
-import com.teksystems.Capstone3BackEnd.controller.UpdateQuantity;
-import com.teksystems.Capstone3BackEnd.models.ProductEntity;
-import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
-import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
-import com.teksystems.Capstone3BackEnd.service.ProductService;
-import com.teksystems.Capstone3BackEnd.utils.Utils;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
+import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
+import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
+import com.teksystems.Capstone3BackEnd.service.ProductService;
+import com.teksystems.Capstone3BackEnd.utils.Utils;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
