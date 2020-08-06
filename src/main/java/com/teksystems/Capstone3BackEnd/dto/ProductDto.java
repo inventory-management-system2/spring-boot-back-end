@@ -1,16 +1,19 @@
 package com.teksystems.Capstone3BackEnd.dto;
 
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
+
+import java.util.List;
+
 public class ProductDto {
     private Long id;
     private String productName;
-    private int quantity;
     private String serialNumber;
     private Double price;
     private String category;
     private String imageUrl;
     private String thumbnail;
     private String description;
-
+    private List<RegionEntity> regions;
 
     public ProductDto(){}
 
@@ -25,14 +28,6 @@ public class ProductDto {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getSerialNumber() {
@@ -83,9 +78,15 @@ public class ProductDto {
         this.description = description;
     }
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-    
+
+    public List<RegionEntity> getRegions() {
+        return regions;
+    }
+
+    public void setRegion(RegionEntity region) {
+        regions.add(region);
+    }
 }

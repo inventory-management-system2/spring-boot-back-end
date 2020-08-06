@@ -1,27 +1,28 @@
 package com.teksystems.Capstone3BackEnd.models.request;
 
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
+
+import java.util.List;
+
 public class ProductRequest {
     private String productName;
-    private int quantity;
     private Double price;
     private String category;
     private String imageUrl;
     private String thumbnail;
     private String description;
+    private List<RegionEntity> regions;
 
-   
-
-    
-
-    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description) {
+    public ProductRequest(String productName, Double price, String category, String imageUrl,
+                          String thumbnail, String description, RegionEntity region) {
 		this.productName = productName;
-		this.quantity = quantity;
+
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+        this.regions.add(region);
 	}
 
 	public ProductRequest(){}
@@ -34,12 +35,11 @@ public class ProductRequest {
         this.productName = productName;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public List<RegionEntity> getRegions() {
+        return regions;
     }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setRegion(RegionEntity region) {
+        this.regions.add(region);
     }
 
     public Double getPrice() {

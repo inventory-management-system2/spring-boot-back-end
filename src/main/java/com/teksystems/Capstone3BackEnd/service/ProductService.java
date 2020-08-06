@@ -13,11 +13,11 @@ import java.util.List;
 
 
 public interface ProductService {
-    ProductDto getProduct(String productId);
+    ProductDto getProduct(String serialNumber);
     List<ProductDto> getAllProducts(int page, int limit);
     ProductDto createProduct(ProductDto productDto);
     ProductDto updateProduct(String serialNumber, ProductDto productDto);
 	
-	ProductEntity updateQuantityProduct(String serialNumber, ProductRequest quantity);
+//	ProductEntity updateQuantityProduct(String serialNumber, ProductRequest quantity);
 
 }

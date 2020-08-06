@@ -2,9 +2,11 @@ package com.teksystems.Capstone3BackEnd.controller;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
+import com.teksystems.Capstone3BackEnd.service.RegionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +19,11 @@ import java.util.List;
 @CrossOrigin(origins="http://64.227.88.54:3000")
 public class ProductController {
     private final ProductService productService;
+    private final RegionService regionService;
 
-    public ProductController(ProductService productService){
+    public ProductController(ProductService productService, RegionService regionService){
         this.productService = productService;
+        this.regionService = regionService;
     }
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE },
             produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_RSS_XML_VALUE }
@@ -49,12 +53,20 @@ public class ProductController {
     }
     
     @PutMapping("/quantity/{serialNumber}")
-    public ProductResponse updateQuantity(@PathVariable String serialNumber, @RequestBody ProductRequest productRequestQty) {
-    	ProductEntity productEntity = productService.updateQuantityProduct(serialNumber, productRequestQty); 
-    	
-    	ProductResponse returnValue = new ProductResponse();
-    	BeanUtils.copyProperties(productEntity, returnValue);
-    	return returnValue; 
+    public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
+        ProductDto dto = productService.getProduct(serialNumber);
+        List<RegionEntity> regionsList = dto.getRegions();
+        if (regionsList.isEmpty()){
+            dto.setRegion(region);
+            productService.updateProduct(serialNumber, dto);
+        }
+//        if (!regionsList.contains(region)){
+//            dto.setRegion(region);
+//            productService.updateProduct(serialNumber, dto);
+//        }
+        RegionEntity updatedRegion = regionService.updateQuantity(region);
+
+    	return updatedRegion;
     }
 
     @GetMapping

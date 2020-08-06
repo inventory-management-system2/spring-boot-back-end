@@ -1,14 +1,11 @@
 package com.teksystems.Capstone3BackEnd.service.implementations;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
-import com.teksystems.Capstone3BackEnd.controller.UpdateQuantity;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
-import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
 import com.teksystems.Capstone3BackEnd.utils.Utils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
@@ -72,17 +68,10 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public ProductDto createProduct(ProductDto productDto) {
-		Optional<ProductEntity> checker = productRepository.findByProductName(productDto.getProductName());
-		if (checker.isPresent()){
-			if (checker.get().getPrice() == null && checker.get().getQuantity() == 0){
-				String serialNumber = checker.get().getSerialNumber();
-				return updateProduct(serialNumber, productDto);
-			}
-		}
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
-		newProduct.setSerialNumber(utils.generateSerialNumber(13));
+		newProduct.setSerialNumber(utils.generateSerialNumber(15));
 		ProductEntity storedProduct = productRepository.save(newProduct);
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(storedProduct, returnValue);
@@ -90,17 +79,17 @@ public class ProductServiceImplementation implements ProductService {
 	}
 
 
-	@Override
-	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
-		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
-		if (productRequestQty.getQuantity() < 1) {
-			return productEntity;
-		}
-		else {
-			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
-			ProductEntity updatedProduct = productRepository.save(productEntity);
-			return updatedProduct;
-		}
-
-	}
+//	@Override
+//	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
+//		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
+//		if (productRequestQty.getQuantity() < 1) {
+//			return productEntity;
+//		}
+//		else {
+//			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
+//			ProductEntity updatedProduct = productRepository.save(productEntity);
+//			return updatedProduct;
+//		}
+//
+//	}
 }

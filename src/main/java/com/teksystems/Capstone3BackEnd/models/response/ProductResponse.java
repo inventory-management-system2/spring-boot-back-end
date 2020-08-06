@@ -1,14 +1,18 @@
 package com.teksystems.Capstone3BackEnd.models.response;
 
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
+
+import java.util.List;
+
 public class ProductResponse {
     private String productName;
-    private int quantity;
     private String serialNumber;
     private Double price;
     private String category;
     private String imageUrl;
     private String thumbnail;
     private String description;
+    private List<RegionEntity> regions;
 
 
     public ProductResponse(){}
@@ -21,12 +25,11 @@ public class ProductResponse {
         this.productName = productName;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setRegions(List<RegionEntity> regions) {
+        this.regions = regions;
     }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setRegion(RegionEntity region){
+        regions.add(region);
     }
 
     public String getSerialNumber() {
