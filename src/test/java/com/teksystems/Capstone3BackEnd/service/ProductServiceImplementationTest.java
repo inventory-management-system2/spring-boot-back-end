@@ -85,6 +85,40 @@ public class ProductServiceImplementationTest {
     	
     	
     }
+    
+    @Test
+    public void testGetProduct() {
+    	ProductEntity productEntity = new ProductEntity(263L, "James Franco", "Mu2Nq-iMACV-WBK",100);
+    	when(productRepository.findBySerialNumber("Mu2Nq-iMACV-WBK")).thenReturn(productEntity);
+    	productService = new ProductServiceImplementation(productRepository, new Utils());
+    	ProductDto actualDto = productService.getProduct("Mu2Nq-iMACV-WBK");
+    	assertEquals("James Franco", actualDto.getProductName());
+    	assertEquals(263L, actualDto.getId());
+    	
+    	
+    }
+    
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
