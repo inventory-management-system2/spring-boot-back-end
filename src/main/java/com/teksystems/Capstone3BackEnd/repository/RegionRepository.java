@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
 @Repository
-public interface RegionRepository extends CrudRepository<RegionEntity,Long>{
+public interface RegionRepository extends CrudRepository<RegionEntity,String>{
+
+	RegionEntity findByRegionName(String regionName);
 
 }

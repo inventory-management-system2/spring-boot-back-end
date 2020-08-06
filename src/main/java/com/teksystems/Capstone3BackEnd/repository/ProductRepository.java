@@ -1,13 +1,13 @@
 package com.teksystems.Capstone3BackEnd.repository;
 
-import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
+import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
 @Repository
 public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Long> {
    ProductEntity findBySerialNumber(String serialNumber);
-   Optional<ProductEntity> findByProductName(String productName);
+   Iterable<ProductEntity> findByRegionsNotContains(RegionEntity regionEntity);
 }

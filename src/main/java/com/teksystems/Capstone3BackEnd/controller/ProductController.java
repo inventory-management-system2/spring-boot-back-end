@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
+import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
@@ -60,17 +61,16 @@ public class ProductController {
         BeanUtils.copyProperties(updatedProduct, returnValue);
         return returnValue;
     }
-    @GetMapping("/quantity/{serialNumber")
+    @GetMapping("/quantity/{serialNumber}")
     public Iterable<RegionEntity> getAllRegions(@PathVariable String serialNumber) {
     	Iterable<RegionEntity> regionEntity = regionService.findAll();
     	return regionEntity;
-    	
     }
     @PutMapping("/quantity/{serialNumber}")
-    public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity regionEntity) {
-    	ProductDto productDto = productService.getProduct(serialNumber);
-    	RegionEntity region = regionService.updateQuantity(productDto,regionEntity);
-    	return region; 
+    public ProductEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity regionEntity) {
+    	ProductEntity productEntity = productService.getProductEntity(serialNumber);
+    	regionService.updateQuantity(productEntity,regionEntity);
+    	return productEntity; 
     }
     @GetMapping
     public List<ProductResponse> getAllProducts(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20") int limit){

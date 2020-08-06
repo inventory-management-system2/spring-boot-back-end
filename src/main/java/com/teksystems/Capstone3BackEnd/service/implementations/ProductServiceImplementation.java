@@ -81,16 +81,16 @@ public class ProductServiceImplementation implements ProductService {
 	}
 
 	@Override
-	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
-//		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
-//		if (productRequestQty.getQuantity() < 1) {
-//			return productEntity;
-//		}
-//		else {
-//			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
-//			ProductEntity updatedProduct = productRepository.save(productEntity);
-//			return updatedProduct;
-//		}
+	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest quantity) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ProductEntity getProductEntity(String serialNumber) {
+		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
+		return productEntity;
+	}
+
+	
 }

@@ -1,5 +1,7 @@
 package com.teksystems.Capstone3BackEnd.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,23 +19,34 @@ public class RegionService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	public RegionEntity findById(Long id) {
-		RegionEntity region = regionRepository.findById(id).get();
-		return region;
-	}
 	
-	public RegionEntity updateQuantity(ProductDto productDto, RegionEntity regionEntity) {
-		ProductEntity product = productRepository.findBySerialNumber(productDto.getSerialNumber());
-		for(RegionEntity region : product.getRegions()){
-			if(region.equals(regionEntity)) {
-				region = UpdateQuantity.getInstance().calculateQuantity(region.getQuantity(),regionEntity);
-				return regionRepository.save(region);
-			}
+	public ProductEntity updateQuantity(ProductEntity productEntity, RegionEntity regionEntity) {
+		RegionEntity regionEnti = regionRepository.findByRegionName(regionEntity.getRegionName());
+		System.out.println("updateQuantity metho service"+ regionEnti.toString());
+		System.out.println("updateQuantity metho service"+ productEntity.toString());
+		
+		for(int x = 0; x<productEntity.getRegions().size(); x++){
+			System.out.println("inside for"+productEntity.getRegions().get(x).toString());
+			if(productEntity.getRegions().contains(regionEntity)) {
+			RegionEntity region = UpdateQuantity.getInstance().calculateQuantity(productEntity.getRegions().get(x).getQuantity(),regionEnti);
+				
+				productEntity.getRegions().add(region);
+				productRepository.save(productEntity);
+				return productEntity;				
+			}			
 		}
-		product.getRegions().add(regionEntity);
 		
+		RegionEntity region = UpdateQuantity.getInstance().calculateQuantity(regionEntity.getQuantity(),regionEnti);
+		region.setProduct(productEntity);
+		System.out.println("updateQuantity metho adding the quantity"+ region.toString());
+		regionRepository.save(region);
+		productEntity.getRegions().add(regionEnti);
+		System.out.println("updateQuantity metho "+ productEntity.toString());
+		 productRepository.save(productEntity);
+		 System.out.println("After Saving "+ productEntity.toString());
+		 
 		
-		return regionEntity;
+		return productEntity;
 	}
 
 	public Iterable<RegionEntity> findAll() {

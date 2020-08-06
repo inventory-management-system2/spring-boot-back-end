@@ -1,15 +1,10 @@
 package com.teksystems.Capstone3BackEnd.service;
 
+import java.util.List;
+
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
-
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 
 public interface ProductService {
@@ -19,5 +14,6 @@ public interface ProductService {
     ProductDto updateProduct(String serialNumber, ProductDto productDto);
 	
 	ProductEntity updateQuantityProduct(String serialNumber, ProductRequest quantity);
+	ProductEntity getProductEntity(String serialNumber);
 
 }

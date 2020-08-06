@@ -7,7 +7,6 @@ import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 public class ProductDto {
     private Long id;
     private String productName;
-    private int quantity;
     private String serialNumber;
     private Double price;
     private String category;
@@ -32,13 +31,7 @@ public class ProductDto {
         this.productName = productName;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    
 
     public String getSerialNumber() {
         return serialNumber;

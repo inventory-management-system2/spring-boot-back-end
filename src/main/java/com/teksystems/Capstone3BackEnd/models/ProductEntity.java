@@ -124,6 +124,16 @@ public class ProductEntity {
 	public void setRegions(List<RegionEntity> regions) {
 		this.regions = regions;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "ProductEntity [id=" + id + ", productName=" + productName + ", serialNumber=" + serialNumber
+				+ ", price=" + price + ", category=" + category + ", imageUrl=" + imageUrl + ", thumbnail=" + thumbnail
+				+ ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", regions=" + regions + "]";
+	}
 
 	@PrePersist
     protected void onCreate(){

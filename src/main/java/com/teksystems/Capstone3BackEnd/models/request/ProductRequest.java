@@ -2,7 +2,6 @@ package com.teksystems.Capstone3BackEnd.models.request;
 
 public class ProductRequest {
     private String productName;
-    private int quantity;
     private Double price;
     private String category;
     private String imageUrl;
@@ -13,10 +12,9 @@ public class ProductRequest {
 
     
 
-    public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl,
+    public ProductRequest(String productName, Double price, String category, String imageUrl,
 			String thumbnail, String description) {
 		this.productName = productName;
-		this.quantity = quantity;
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
@@ -34,13 +32,6 @@ public class ProductRequest {
         this.productName = productName;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public Double getPrice() {
         return price;
