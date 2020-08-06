@@ -10,9 +10,9 @@ public class ProductDto {
     private String imageUrl;
     private String thumbnail;
     private String description;
-    private String regionNE; 
-    private String regionSE; 
-    private String regionSW; 
+    private int regionNe; 
+    private int regionSe; 
+    private int regionSw; 
 
 
     public ProductDto(){}
@@ -92,33 +92,33 @@ public class ProductDto {
 	}
 
 
-	public String getRegionNE() {
-		return regionNE;
+	public int getRegionNe() {
+		return regionNe;
 	}
 
 
-	public void setRegionNE(String regionNE) {
-		this.regionNE = regionNE;
+	public void setRegionNe(int regionNe) {
+		this.regionNe = regionNe;
 	}
 
 
-	public String getRegionSE() {
-		return regionSE;
+	public int getRegionSe() {
+		return regionSe;
 	}
 
 
-	public void setRegionSE(String regionSE) {
-		this.regionSE = regionSE;
+	public void setRegionSe(int regionSe) {
+		this.regionSe = regionSe;
 	}
 
 
-	public String getRegionSW() {
-		return regionSW;
+	public int getRegionSw() {
+		return regionSw;
 	}
 
 
-	public void setRegionSW(String regionSW) {
-		this.regionSW = regionSW;
+	public void setRegionSw(int regionSw) {
+		this.regionSw = regionSw;
 	}
 	
 	

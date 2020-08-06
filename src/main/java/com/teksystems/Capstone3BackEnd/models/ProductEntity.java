@@ -32,14 +32,14 @@ public class ProductEntity {
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
-    private String regionNE; 
-    private String regionSE; 
-    private String regionSW; 
+    private int regionNe; 
+    private int regionSe; 
+    private int regionSw; 
 
     
 
 	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description, String regionNE, String regionSE, String regionSW) {
+			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
 		this.productName = productName;
 		this.quantity = quantity;
 		this.price = price;
@@ -47,9 +47,9 @@ public class ProductEntity {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
-		this.regionNE = regionNE; 
-		this.regionSE = regionSE;
-		this.regionSW = regionSW; 
+		this.regionNe = regionNe; 
+		this.regionSe = regionSe;
+		this.regionSw = regionSw; 
 	}
 
 	public ProductEntity(){}
@@ -128,28 +128,28 @@ public class ProductEntity {
 	
 	
 	
-	public String getRegionNE() {
-		return regionNE;
+	public int getRegionNe() {
+		return regionNe;
 	}
 
-	public void setRegionNE(String regionNE) {
-		this.regionNE = regionNE;
+	public void setRegionNe(int regionNe) {
+		this.regionNe = regionNe;
 	}
 
-	public String getRegionSE() {
-		return regionSE;
+	public int getRegionSe() {
+		return regionSe;
 	}
 
-	public void setRegionSE(String regionSE) {
-		this.regionSE = regionSE;
+	public void setRegionSe(int regionSe) {
+		this.regionSe = regionSe;
 	}
 
-	public String getRegionSW() {
-		return regionSW;
+	public int getRegionSw() {
+		return regionSw;
 	}
 
-	public void setRegionSW(String regionSW) {
-		this.regionSW = regionSW;
+	public void setRegionSw(int regionSw) {
+		this.regionSw = regionSw;
 	}
 
 	@PrePersist
