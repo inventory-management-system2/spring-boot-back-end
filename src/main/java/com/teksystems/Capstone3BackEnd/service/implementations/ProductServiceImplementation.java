@@ -86,14 +86,13 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
 		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
-		if (productRequestQty.getQuantity() < 1) {
-			return productEntity;
-		}
-		else {
-			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
+		
+		productEntity.setRegionNe(productEntity.getRegionNe()+productRequestQty.getRegionNe());
+		productEntity.setRegionSe(productEntity.getRegionSe()+productRequestQty.getRegionSe());
+		productEntity.setRegionSw(productEntity.getRegionSw()+productRequestQty.getRegionSw());
+			
 			ProductEntity updatedProduct = productRepository.save(productEntity);
 			return updatedProduct;
-		}
 
 	}
 }

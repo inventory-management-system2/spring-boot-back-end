@@ -8,13 +8,16 @@ public class ProductRequest {
     private String imageUrl;
     private String thumbnail;
     private String description;
+    private int regionNe; 
+    private int regionSe; 
+    private int regionSw; 
 
    
 
     
 
     public ProductRequest(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description) {
+			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
 		this.productName = productName;
 		this.quantity = quantity;
 		this.price = price;
@@ -22,9 +25,16 @@ public class ProductRequest {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+		this.regionNe = regionNe; 
+		this.regionSe = regionSe;
+		this.regionSw = regionSw; 
 	}
 
 	public ProductRequest(){}
+
+    public ProductRequest(String productName) {
+        this.productName = productName;
+    }
 
     public String getProductName() {
         return productName;
@@ -81,6 +91,31 @@ public class ProductRequest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public int getRegionNe() {
+		return regionNe;
+	}
+
+	public void setRegionNe(int regionNe) {
+		this.regionNe = regionNe;
+	}
+
+	public int getRegionSe() {
+		return regionSe;
+	}
+
+	public void setRegionSe(int regionSe) {
+		this.regionSe = regionSe;
+	}
+
+	public int getRegionSw() {
+		return regionSw;
+	}
+
+	public void setRegionSW(int regionSw) {
+		this.regionSw = regionSw;
+	}
     
+	
 
 }

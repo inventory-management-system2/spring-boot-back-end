@@ -32,21 +32,54 @@ public class ProductEntity {
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
+    private int regionNe; 
+    private int regionSe; 
+    private int regionSw;
 
-    
-
-	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description) {
+	public ProductEntity(Long id, String productName, int quantity, Double price,  String serialNumber, String category, String imageUrl, String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+		this.id = id;
 		this.productName = productName;
 		this.quantity = quantity;
+		this.price = price;
+		this.serialNumber = serialNumber;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.regionNe = regionNe;
+		this.regionSe = regionSe;
+		this.regionSw = regionSw;
+	}
+
+	public ProductEntity(Long id, String productName, int quantity, String serialNumber, Double price, String category, String imageUrl, String thumbnail, String description, Date createdAt, Date updatedAt) {
+		this.id = id;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.serialNumber = serialNumber;
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
+	public ProductEntity(String productName, Double price, String category, String imageUrl,
+						 String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+		this.productName = productName;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.regionNe = regionNe; 
+		this.regionSe = regionSe;
+		this.regionSw = regionSw; 
 	}
 
 	public ProductEntity(){}
+
 
 	public String getProductName() {
 		return productName;
@@ -62,14 +95,6 @@ public class ProductEntity {
 
 	public void setId(Long id){
 		this.id = id;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getSerialNumber() {
@@ -120,6 +145,32 @@ public class ProductEntity {
 		this.description = description;
 	}
 	
+	
+	
+	public int getRegionNe() {
+		return regionNe;
+	}
+
+	public void setRegionNe(int regionNe) {
+		this.regionNe = regionNe;
+	}
+
+	public int getRegionSe() {
+		return regionSe;
+	}
+
+	public void setRegionSe(int regionSe) {
+		this.regionSe = regionSe;
+	}
+
+	public int getRegionSw() {
+		return regionSw;
+	}
+
+	public void setRegionSw(int regionSw) {
+		this.regionSw = regionSw;
+	}
+
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
