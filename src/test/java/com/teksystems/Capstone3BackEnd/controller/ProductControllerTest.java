@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,21 +25,21 @@ public class ProductControllerTest {
     @Test
     public void shouldCreateProduct() {
 
-//        ProductRequest productRequest = new ProductRequest("Jelly Beans");
-//        ProductDto productDto = new ProductDto();
-//        BeanUtils.copyProperties(productRequest, productDto);
-//
-//        ProductDto expectedDto = new ProductDto(55L, "Jelly Beans", "auto-generate");
-//
-//        when(productService.createProduct(productDto)).thenReturn(expectedDto);
-//
-//        productController = new ProductController(productService);
-//
-//        ProductResponse expected = new ProductResponse("Jelly Beans", "auto-generate");
-//
-//        ProductResponse actual = productController.createProduct(productRequest);
-//
-//        assertEquals(expected, actual);
+        ProductRequest productRequest = new ProductRequest("Jelly Beans");
+        ProductDto productDto = new ProductDto();
+        BeanUtils.copyProperties(productRequest, productDto);
+
+        ProductDto expectedDto = new ProductDto(55L, "Jelly Beans", "auto-generate");
+
+        when(productService.createProduct(Mockito.any(ProductDto.class))).thenReturn(expectedDto);
+
+        productController = new ProductController(productService);
+
+        ProductResponse expected = new ProductResponse("Jelly Beans", "auto-generate");
+
+        ProductResponse actual = productController.createProduct(productRequest);
+
+        assertEquals(expected.getProductName(), actual.getProductName());
     }
 
 
