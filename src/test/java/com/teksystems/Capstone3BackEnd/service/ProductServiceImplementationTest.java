@@ -33,20 +33,14 @@ public class ProductServiceImplementationTest {
     @Test
     public void shouldUpdateProduct() {
 
-        // From dto Controller
         String serialNo = "Mu2Nq-iMACV-WBK";
 
-        // From dto controller
         ProductDto dtoForUpdate = new ProductDto(263L, "James Franco", 0, "Mu2Nq-iMACV-WBK", 4.99, "cool actor",
                 "asdfasdf.jpg", "james_franco_looking_cool.png", "cool", new Date(), new Date());
 
-
-
-        // WHEN find by product name and find by serial number then return expectedEntity
         ProductEntity expectedEntity = new ProductEntity(263L, "James Franco", 0, "Mu2Nq-iMACV-WBK", 4.99, "actor",
                 "asdfasdf.jpg", "james_franco_looking_cool.png", "cool", new Date(), new Date());
 
-//        when(productRepository.findByProductName("James Franco")).thenReturn(expectedEntity);
         when(productRepository.findBySerialNumber("Mu2Nq-iMACV-WBK")).thenReturn(expectedEntity);
 
         ProductEntity expectedUpdate = new ProductEntity(263L, "James Franco", 1, "Mu2Nq-iMACV-WBK", 4.99, "cool actor",
@@ -62,16 +56,7 @@ public class ProductServiceImplementationTest {
 
     }
     
-    @Test 
-    public void testCreateProduct() {
-//    	ProductDto productDto = new ProductDto("Jelly Bean");
-//    	ProductEntity productEntity = new ProductEntity(555L,"Jelly Bean");
-//    	ProductEntity expectedEntity = new ProductEntity(555L,"Jelly Bean","serialNumber");
-//    	when(productRepository.save(productEntity)).thenReturn(expectedEntity);
-//    	productService = new ProductServiceImplementation(productRepository, new Utils());
-//    	ProductDto actual = productService.createProduct(productDto);
-//    	assertEquals("Jelly Bean", actual.getProductName());
-    }
+  
     
     @Test
     public void testUpdateQuantity() {
