@@ -43,19 +43,19 @@ public class ProductController {
 
     
     @PutMapping("/quantity/{serialNumber}")
-    public RegionResponse updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
+    public ProductResponse updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
         ProductDto dto = productService.getProduct(serialNumber);
-        List<RegionEntity> regionsList = dto.getRegions();
-        if (regionsList.isEmpty()){
-            dto.setRegion(region);
-            productService.updateProduct(serialNumber, dto);
-        }
-        else if (!regionsList.contains(region)){
-            dto.setRegion(region);
-            productService.updateProduct(serialNumber, dto);
-        }
+//        List<RegionEntity> regionsList = dto.getRegions();
+//        if (regionsList.isEmpty()){
+//            dto.setRegion(region);
+//            productService.updateProduct(serialNumber, dto);
+//        }
+//        else if (!regionsList.contains(region)){
+//            dto.setRegion(region);
+//            productService.updateProduct(serialNumber, dto);
+//        }
         RegionEntity updatedRegion = regionService.updateQuantity(region, serialNumber);
-        RegionResponse returnValue = new RegionResponse();
+        ProductResponse returnValue = new ProductResponse();
         BeanUtils.copyProperties(dto, returnValue);
     	return returnValue;
     }

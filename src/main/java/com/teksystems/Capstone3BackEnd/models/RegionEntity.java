@@ -17,21 +17,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class RegionEntity {
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     @Column(nullable = false, unique = true)
     private String regionName;
     private int quantity = 0;
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date updatedAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product")
-    private ProductEntity product;
+//    @Column(updatable=false)
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+//    private Date createdAt;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+//    private Date updatedAt;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="product")
+//    private ProductEntity product;
 
     public RegionEntity(String regionName, int quantity) {
         this.regionName = regionName;
@@ -39,16 +39,16 @@ public class RegionEntity {
     }
     public RegionEntity(String regionName) {
         this.regionName = regionName;
-        this.quantity = quantity;
+        this.quantity = 0;
     }
     
     public RegionEntity() {}
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
     public String getRegionName() {
         return regionName;
     }
@@ -61,33 +61,33 @@ public class RegionEntity {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    };
-
-    public ProductEntity getProduct() {
-        return product;
-    }
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
-    @PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
+//    public Date getCreatedAt() {
+//        return createdAt;
+//    }
+//    public void setCreatedAt(Date createdAt) {
+//        this.createdAt = createdAt;
+//    }
+//    public Date getUpdatedAt() {
+//        return updatedAt;
+//    }
+//    public void setUpdatedAt(Date updatedAt) {
+//        this.updatedAt = updatedAt;
+//    };
+//
+//    public ProductEntity getProduct() {
+//        return product;
+//    }
+//    public void setProduct(ProductEntity product) {
+//        this.product = product;
+//    }
+//    @PrePersist
+//    protected void onCreate(){
+//        this.createdAt = new Date();
+//    }
+//    @PreUpdate
+//    protected void onUpdate(){
+//        this.updatedAt = new Date();
+//    }
 
 
 }

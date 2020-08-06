@@ -12,10 +12,10 @@ public class ProductRequest {
     private String imageUrl;
     private String thumbnail;
     private String description;
-    private List<RegionEntity> regions;
+//    private List<RegionEntity> regions;
 
     public ProductRequest(String productName, Double price, String category, String imageUrl,
-                          String thumbnail, String description, RegionEntity region) {
+                          String thumbnail, String description) {
 		this.productName = productName;
 
 		this.price = price;
@@ -23,8 +23,8 @@ public class ProductRequest {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
-        List<RegionEntity> regions = new ArrayList<RegionEntity>();
-        this.regions.add(region);
+//        List<RegionEntity> regions = new ArrayList<RegionEntity>();
+//        this.regions.add(region);
 	}
 
 	public ProductRequest(){}
@@ -37,12 +37,12 @@ public class ProductRequest {
         this.productName = productName;
     }
 
-    public List<RegionEntity> getRegions() {
-        return regions;
-    }
-    public void setRegion(RegionEntity region) {
-        this.regions.add(region);
-    }
+//    public List<RegionEntity> getRegions() {
+//        return regions;
+//    }
+//    public void setRegion(RegionEntity region) {
+//        this.regions.add(region);
+//    }
 
     public Double getPrice() {
         return price;

@@ -90,4 +90,7 @@ public class ProductDto {
     public void setRegion(RegionEntity region) {
         regions.add(region);
     }
+    public void setRegions(List<RegionEntity> regions) {
+       this.regions = regions;
+    }
 }

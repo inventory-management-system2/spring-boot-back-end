@@ -5,5 +5,5 @@ import com.teksystems.Capstone3BackEnd.service.RegionService;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RegionRepository extends CrudRepository<RegionEntity, Long> {
-
+    RegionEntity findByName(String regionName);
 }

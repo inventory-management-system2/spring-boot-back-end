@@ -26,6 +26,10 @@ public class ProductResponse {
         this.productName = productName;
     }
 
+    public List<RegionEntity> getRegions() {
+        return regions;
+    }
+
     public void setRegions(List<RegionEntity> regions) {
         this.regions = regions;
     }

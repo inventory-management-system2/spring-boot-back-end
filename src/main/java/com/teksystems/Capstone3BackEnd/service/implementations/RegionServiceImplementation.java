@@ -12,21 +12,20 @@ import java.util.Optional;
 @Service
 public class RegionServiceImplementation implements RegionService {
     private final RegionRepository regionRepository;
-    private final ProductRepository productRepository;
+//    private final ProductRepository productRepository;
 
     public RegionServiceImplementation(RegionRepository regionRepository, ProductRepository productRepository){
         this.regionRepository = regionRepository;
-        this.productRepository = productRepository;
+//        this.productRepository = productRepository;
 
     }
 
     @Override
     public RegionEntity updateQuantity(RegionEntity region, String serialNumber) {
         int updatedQuantity = region.getQuantity();
-        Optional<RegionEntity> originalRegion = regionRepository.findById(region.getId());
-		int total = originalRegion.get().getQuantity() + updatedQuantity;
+        RegionEntity originalRegion = regionRepository.findByName(region.getRegionName());
+		int total = originalRegion.getQuantity() + updatedQuantity;
         region.setQuantity(total);
-        region.setProduct(productRepository.findBySerialNumber(serialNumber));
 		regionRepository.save(region);
         return region;
     }

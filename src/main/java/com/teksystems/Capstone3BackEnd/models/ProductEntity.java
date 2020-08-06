@@ -49,6 +49,12 @@ public class ProductEntity {
 		this.thumbnail = thumbnail;
 		this.description = description;
 		List<RegionEntity> regions = new ArrayList<RegionEntity>();
+		RegionEntity region1 = new RegionEntity("Southwest " + this.productName);
+		RegionEntity region2 = new RegionEntity("Northeast " + this.productName);
+		RegionEntity region3 = new RegionEntity("Southeast " + this.productName);
+		regions.add(region1);
+		regions.add(region2);
+		regions.add(region3);
 	}
 
 	public ProductEntity(){}
