@@ -45,7 +45,15 @@ public class ProductDto {
         this.regionSw = regionSw;
     }
 
-    public Long getId() {
+    
+
+
+	public ProductDto(String productName) {
+		this.productName = productName;
+	}
+
+
+	public Long getId() {
         return id;
     }
 

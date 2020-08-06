@@ -1,10 +1,9 @@
 package com.teksystems.Capstone3BackEnd.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -12,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.teksystems.Capstone3BackEnd.dto.ProductDto;
 import com.teksystems.Capstone3BackEnd.models.ProductEntity;
+import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
 import com.teksystems.Capstone3BackEnd.service.implementations.ProductServiceImplementation;
 import com.teksystems.Capstone3BackEnd.utils.Utils;
@@ -60,6 +60,30 @@ public class ProductServiceImplementationTest {
         ProductDto responseDto = productService.updateProduct(serialNo, dtoForUpdate);
         assertEquals("cool actor", responseDto.getCategory());
 
+    }
+    
+    @Test 
+    public void testCreateProduct() {
+//    	ProductDto productDto = new ProductDto("Jelly Bean");
+//    	ProductEntity productEntity = new ProductEntity(555L,"Jelly Bean");
+//    	ProductEntity expectedEntity = new ProductEntity(555L,"Jelly Bean","serialNumber");
+//    	when(productRepository.save(productEntity)).thenReturn(expectedEntity);
+//    	productService = new ProductServiceImplementation(productRepository, new Utils());
+//    	ProductDto actual = productService.createProduct(productDto);
+//    	assertEquals("Jelly Bean", actual.getProductName());
+    }
+    
+    @Test
+    public void testUpdateQuantity() {
+    	ProductRequest productRequestQty = new ProductRequest(50);
+    	ProductEntity productEntity = new ProductEntity(263L, "James Franco", "Mu2Nq-iMACV-WBK",100);
+    	when(productRepository.findBySerialNumber("Mu2Nq-iMACV-WBK")).thenReturn(productEntity);
+    	when(productRepository.save(productEntity)).thenReturn(new ProductEntity(263L, "James Franco", "Mu2Nq-iMACV-WBK",150));
+    	productService = new ProductServiceImplementation(productRepository, new Utils());
+    	ProductEntity actual = productService.updateQuantityProduct("Mu2Nq-iMACV-WBK", productRequestQty);
+    	assertEquals(150,actual.getRegionNe());
+    	
+    	
     }
 
 
