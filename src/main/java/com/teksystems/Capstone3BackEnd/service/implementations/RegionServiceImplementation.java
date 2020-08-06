@@ -2,6 +2,7 @@ package com.teksystems.Capstone3BackEnd.service.implementations;
 
 
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
+import com.teksystems.Capstone3BackEnd.repository.ProductRepository;
 import com.teksystems.Capstone3BackEnd.repository.RegionRepository;
 import com.teksystems.Capstone3BackEnd.service.RegionService;
 import org.springframework.stereotype.Service;
@@ -11,17 +12,21 @@ import java.util.Optional;
 @Service
 public class RegionServiceImplementation implements RegionService {
     private final RegionRepository regionRepository;
+    private final ProductRepository productRepository;
 
-    public RegionServiceImplementation(RegionRepository regionRepository){
+    public RegionServiceImplementation(RegionRepository regionRepository, ProductRepository productRepository){
         this.regionRepository = regionRepository;
+        this.productRepository = productRepository;
+
     }
 
     @Override
-    public RegionEntity updateQuantity(RegionEntity region) {
+    public RegionEntity updateQuantity(RegionEntity region, String serialNumber) {
         int updatedQuantity = region.getQuantity();
         Optional<RegionEntity> originalRegion = regionRepository.findById(region.getId());
 		int total = originalRegion.get().getQuantity() + updatedQuantity;
         region.setQuantity(total);
+        region.setProduct(productRepository.findBySerialNumber(serialNumber));
 		regionRepository.save(region);
         return region;
     }

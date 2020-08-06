@@ -5,6 +5,7 @@ import com.teksystems.Capstone3BackEnd.models.ProductEntity;
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 import com.teksystems.Capstone3BackEnd.models.request.ProductRequest;
 import com.teksystems.Capstone3BackEnd.models.response.ProductResponse;
+import com.teksystems.Capstone3BackEnd.models.response.RegionResponse;
 import com.teksystems.Capstone3BackEnd.service.ProductService;
 import com.teksystems.Capstone3BackEnd.service.RegionService;
 import org.springframework.beans.BeanUtils;
@@ -40,34 +41,23 @@ public class ProductController {
         return returnValue;
     }
 
-    @PutMapping("/{serialNumber}")
-    public ProductResponse updateProduct(@PathVariable String serialNumber, @RequestBody ProductRequest productRequest){
-        ProductDto productDto = new ProductDto();
-        BeanUtils.copyProperties(productRequest, productDto);
-
-        ProductDto updatedProduct = productService.updateProduct(serialNumber, productDto);
-
-        ProductResponse returnValue = new ProductResponse();
-        BeanUtils.copyProperties(updatedProduct, returnValue);
-        return returnValue;
-    }
     
     @PutMapping("/quantity/{serialNumber}")
-    public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
+    public RegionResponse updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
         ProductDto dto = productService.getProduct(serialNumber);
-        List<RegionEntity> regionsList = new ArrayList<RegionEntity>();
-        regionsList = dto.getRegions();
+        List<RegionEntity> regionsList = dto.getRegions();
         if (regionsList.isEmpty()){
             dto.setRegion(region);
             productService.updateProduct(serialNumber, dto);
         }
-//        if (!regionsList.contains(region)){
-//            dto.setRegion(region);
-//            productService.updateProduct(serialNumber, dto);
-//        }
-        RegionEntity updatedRegion = regionService.updateQuantity(region);
-
-    	return updatedRegion;
+        else if (!regionsList.contains(region)){
+            dto.setRegion(region);
+            productService.updateProduct(serialNumber, dto);
+        }
+        RegionEntity updatedRegion = regionService.updateQuantity(region, serialNumber);
+        RegionResponse returnValue = new RegionResponse();
+        BeanUtils.copyProperties(dto, returnValue);
+    	return returnValue;
     }
 
     @GetMapping
@@ -90,6 +80,17 @@ public class ProductController {
         return productResponse;
     }
 
+    @PutMapping("/{serialNumber}")
+    public ProductResponse updateProduct(@PathVariable String serialNumber, @RequestBody ProductRequest productRequest){
+        ProductDto productDto = new ProductDto();
+        BeanUtils.copyProperties(productRequest, productDto);
+
+        ProductDto updatedProduct = productService.updateProduct(serialNumber, productDto);
+
+        ProductResponse returnValue = new ProductResponse();
+        BeanUtils.copyProperties(updatedProduct, returnValue);
+        return returnValue;
+    }
 }
 
 

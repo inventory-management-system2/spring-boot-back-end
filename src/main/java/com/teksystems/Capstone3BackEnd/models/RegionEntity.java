@@ -33,14 +33,15 @@ public class RegionEntity {
     @JoinColumn(name="product")
     private ProductEntity product;
 
-//    public RegionEntity(String regionName, int quantity) {
-//        this.regionName = regionName;
-//        this.quantity = quantity;
-//    }
+    public RegionEntity(String regionName, int quantity) {
+        this.regionName = regionName;
+        this.quantity = quantity;
+    }
     public RegionEntity(String regionName) {
         this.regionName = regionName;
         this.quantity = quantity;
     }
+    
     public RegionEntity() {}
     public Long getId() {
         return id;
