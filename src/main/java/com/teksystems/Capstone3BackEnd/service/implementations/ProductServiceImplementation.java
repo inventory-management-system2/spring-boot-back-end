@@ -75,7 +75,7 @@ public class ProductServiceImplementation implements ProductService {
 		ProductEntity newProduct = new ProductEntity();
 		BeanUtils.copyProperties(productDto, newProduct);
 
-		newProduct.setSerialNumber(utils.generateSerialNumber(13));
+		newProduct.setSerialNumber(utils.generateSerialNumber(15));
 		ProductEntity storedProduct = productRepository.save(newProduct);
 		ProductDto returnValue = new ProductDto();
 		BeanUtils.copyProperties(storedProduct, returnValue);
@@ -86,14 +86,13 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public ProductEntity updateQuantityProduct(String serialNumber, ProductRequest productRequestQty) {
 		ProductEntity productEntity = productRepository.findBySerialNumber(serialNumber);
-		if (productRequestQty.getQuantity() < 1) {
-			return productEntity;
-		}
-		else {
-			UpdateQuantity.getInstance().calculateQuantity(productRequestQty.getQuantity(), productEntity);
+		
+		productEntity.setRegionNe(productEntity.getRegionNe()+productRequestQty.getRegionNe());
+		productEntity.setRegionSe(productEntity.getRegionSe()+productRequestQty.getRegionSe());
+		productEntity.setRegionSw(productEntity.getRegionSw()+productRequestQty.getRegionSw());
+			
 			ProductEntity updatedProduct = productRepository.save(productEntity);
 			return updatedProduct;
-		}
 
 	}
 }

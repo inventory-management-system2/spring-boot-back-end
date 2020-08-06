@@ -14,7 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("products")
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins= {"http://localhost:3000"})
+//@CrossOrigin(origins= {"http://64.227.88.54:3000"})
 public class ProductController {
     private final ProductService productService;
 
@@ -27,6 +28,7 @@ public class ProductController {
 
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest){
         ProductDto productDto = new ProductDto();
+        System.out.println("line 30 " + productRequest.getProductName() + productRequest.getCategory() + productRequest.getPrice() + productRequest.getQuantity() + productRequest.getDescription());
         BeanUtils.copyProperties(productRequest, productDto);
 
         ProductDto createdProduct = productService.createProduct(productDto);

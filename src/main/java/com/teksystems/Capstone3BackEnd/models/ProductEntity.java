@@ -32,11 +32,14 @@ public class ProductEntity {
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
+    private int regionNe; 
+    private int regionSe; 
+    private int regionSw; 
 
     
 
 	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description) {
+			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
 		this.productName = productName;
 		this.quantity = quantity;
 		this.price = price;
@@ -44,6 +47,9 @@ public class ProductEntity {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+		this.regionNe = regionNe; 
+		this.regionSe = regionSe;
+		this.regionSw = regionSw; 
 	}
 
 	public ProductEntity(){}
@@ -120,6 +126,32 @@ public class ProductEntity {
 		this.description = description;
 	}
 	
+	
+	
+	public int getRegionNe() {
+		return regionNe;
+	}
+
+	public void setRegionNe(int regionNe) {
+		this.regionNe = regionNe;
+	}
+
+	public int getRegionSe() {
+		return regionSe;
+	}
+
+	public void setRegionSe(int regionSe) {
+		this.regionSe = regionSe;
+	}
+
+	public int getRegionSw() {
+		return regionSw;
+	}
+
+	public void setRegionSw(int regionSw) {
+		this.regionSw = regionSw;
+	}
+
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
