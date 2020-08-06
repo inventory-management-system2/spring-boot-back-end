@@ -2,6 +2,7 @@ package com.teksystems.Capstone3BackEnd.models.request;
 
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRequest {
@@ -22,6 +23,7 @@ public class ProductRequest {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+        List<RegionEntity> regions = new ArrayList<RegionEntity>();
         this.regions.add(region);
 	}
 

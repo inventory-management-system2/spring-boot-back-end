@@ -2,6 +2,7 @@ package com.teksystems.Capstone3BackEnd.models.response;
 
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductResponse {
@@ -12,7 +13,7 @@ public class ProductResponse {
     private String imageUrl;
     private String thumbnail;
     private String description;
-    private List<RegionEntity> regions;
+    private List<RegionEntity> regions = new ArrayList<RegionEntity>();
 
 
     public ProductResponse(){}

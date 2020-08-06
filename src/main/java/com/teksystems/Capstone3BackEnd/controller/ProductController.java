@@ -55,7 +55,8 @@ public class ProductController {
     @PutMapping("/quantity/{serialNumber}")
     public RegionEntity updateQuantity(@PathVariable String serialNumber, @RequestBody RegionEntity region) {
         ProductDto dto = productService.getProduct(serialNumber);
-        List<RegionEntity> regionsList = dto.getRegions();
+        List<RegionEntity> regionsList = new ArrayList<RegionEntity>();
+        regionsList = dto.getRegions();
         if (regionsList.isEmpty()){
             dto.setRegion(region);
             productService.updateProduct(serialNumber, dto);

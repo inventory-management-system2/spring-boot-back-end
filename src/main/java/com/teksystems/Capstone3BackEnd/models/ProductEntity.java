@@ -1,5 +1,6 @@
 package com.teksystems.Capstone3BackEnd.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class ProductEntity {
 		this.imageUrl = imageUrl;
 		this.thumbnail = thumbnail;
 		this.description = description;
+		List<RegionEntity> regions = new ArrayList<RegionEntity>();
 	}
 
 	public ProductEntity(){}

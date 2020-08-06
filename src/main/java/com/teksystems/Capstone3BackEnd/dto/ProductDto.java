@@ -2,6 +2,7 @@ package com.teksystems.Capstone3BackEnd.dto;
 
 import com.teksystems.Capstone3BackEnd.models.RegionEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDto {
@@ -13,7 +14,7 @@ public class ProductDto {
     private String imageUrl;
     private String thumbnail;
     private String description;
-    private List<RegionEntity> regions;
+    private List<RegionEntity> regions = new ArrayList<RegionEntity>();
 
     public ProductDto(){}
 
