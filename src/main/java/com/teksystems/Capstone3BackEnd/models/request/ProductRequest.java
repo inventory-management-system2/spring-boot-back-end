@@ -32,7 +32,17 @@ public class ProductRequest {
 
 	public ProductRequest(){}
 
-    public String getProductName() {
+    public ProductRequest(String productName) {
+        this.productName = productName;
+    }
+
+    
+
+	public ProductRequest(int regionNe) {
+		this.regionNe = regionNe;
+	}
+
+	public String getProductName() {
         return productName;
     }
 

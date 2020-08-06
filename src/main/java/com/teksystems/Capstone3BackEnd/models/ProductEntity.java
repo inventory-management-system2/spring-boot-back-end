@@ -34,14 +34,40 @@ public class ProductEntity {
     private Date updatedAt;
     private int regionNe; 
     private int regionSe; 
-    private int regionSw; 
+    private int regionSw;
 
-    
-
-	public ProductEntity(String productName, int quantity, Double price, String category, String imageUrl,
-			String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+	public ProductEntity(Long id, String productName, int quantity, Double price,  String serialNumber, String category, String imageUrl, String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+		this.id = id;
 		this.productName = productName;
 		this.quantity = quantity;
+		this.price = price;
+		this.serialNumber = serialNumber;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.regionNe = regionNe;
+		this.regionSe = regionSe;
+		this.regionSw = regionSw;
+	}
+
+	public ProductEntity(Long id, String productName, int quantity, String serialNumber, Double price, String category, String imageUrl, String thumbnail, String description, Date createdAt, Date updatedAt) {
+		this.id = id;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.thumbnail = thumbnail;
+		this.description = description;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
+	public ProductEntity(String productName, Double price, String category, String imageUrl,
+						 String thumbnail, String description, int regionNe, int regionSe, int regionSw) {
+		this.productName = productName;
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
@@ -53,6 +79,31 @@ public class ProductEntity {
 	}
 
 	public ProductEntity(){}
+
+
+	
+
+	public ProductEntity(String productName) {
+		this.productName = productName;
+	}
+	
+
+	public ProductEntity(Long id, String productName, String serialNumber) {
+		this.id = id;
+		this.productName = productName;
+		this.serialNumber = serialNumber;
+	}
+
+	
+
+	
+
+	public ProductEntity(Long id, String productName, String serialNumber, int regionNe) {
+		this.id = id;
+		this.productName = productName;
+		this.serialNumber = serialNumber;
+		this.regionNe = regionNe;
+	}
 
 	public String getProductName() {
 		return productName;
@@ -68,14 +119,6 @@ public class ProductEntity {
 
 	public void setId(Long id){
 		this.id = id;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getSerialNumber() {
