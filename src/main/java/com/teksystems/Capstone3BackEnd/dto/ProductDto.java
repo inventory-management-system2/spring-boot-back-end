@@ -14,7 +14,7 @@ public class ProductDto {
     private String imageUrl;
     private String thumbnail;
     private String description;
-    private List<RegionEntity> regions = new ArrayList<RegionEntity>();
+    private List<RegionEntity> regions;
 
     public ProductDto(){}
 
