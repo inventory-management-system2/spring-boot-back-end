@@ -26,6 +26,12 @@ public class ProductServiceImplementationTest {
 
     @Test
     public void shouldCreateProduct() {
+        System.out.println("alksdjflkasjdfsad");
+        System.out.println("alksdjflkasjdfsad");
+        System.out.println("alksdjflkasjdfsad");
+        System.out.println("alksdjflkasjdfsad");
+        System.out.println("alksdjflkasjdfsad");
+        System.out.println("alksdjflkasjdfsad");
 
 
     }
